@@ -10470,6 +10470,8 @@ entries:
     isDefinedByTaxonomy: ibm-granite-guardian
     isPartOf: granite-guardian-harm-group
     type: Risk
+    isDetectedBy:
+      - gg-social-bias-detection
     tag: social_bias
   - id: granite-profanity
     name: Profanity
@@ -10488,6 +10490,8 @@ entries:
     isDefinedByTaxonomy: ibm-granite-guardian
     isPartOf: granite-guardian-harm-group
     type: Risk
+    isDetectedBy:
+      - gg-profanity-detection
     tag: profanity
   - id: granite-sexual-content
     name: Sexual Content
@@ -10513,6 +10517,8 @@ entries:
     isDefinedByTaxonomy: ibm-granite-guardian
     isPartOf: granite-guardian-harm-group
     type: Risk
+    isDetectedBy:
+      - gg-sexual-content-detection
     tag: sexual-content
   - id: granite-unethical-behavior
     name: Unethical Behavior
@@ -10536,6 +10542,8 @@ entries:
     isDefinedByTaxonomy: ibm-granite-guardian
     isPartOf: granite-guardian-harm-group
     type: Risk
+    isDetectedBy:
+      - gg-unethical-behavior-detection
     tag: unethical-behavior
   - id: granite-violence
     name: Violence
@@ -10555,6 +10563,8 @@ entries:
     isDefinedByTaxonomy: ibm-granite-guardian
     isPartOf: granite-guardian-harm-group
     type: Risk
+    isDetectedBy:
+      - gg-violence-detection
     tag: violence
   - id: granite-jailbreak
     name: Jailbreaking
@@ -10572,6 +10582,8 @@ entries:
     isDefinedByTaxonomy: ibm-granite-guardian
     isPartOf: granite-guardian-harm-group
     type: Risk
+    isDetectedBy:
+      - gg-jailbreak-detection
     tag: jailbreak
   - id: granite-harm-engagement
     name: Harm Engagement
@@ -10598,6 +10610,8 @@ entries:
     isDefinedByTaxonomy: ibm-granite-guardian
     isPartOf: granite-guardian-conversational-egregiousness
     type: Risk
+    isDetectedBy:
+      - gg-harm-engagement-detection
     tag: harm-engagement
   - id: granite-evasiveness
     name: Evasiveness
@@ -10616,6 +10630,8 @@ entries:
     isDefinedByTaxonomy: ibm-granite-guardian
     isPartOf: granite-guardian-conversational-egregiousness
     type: Risk
+    isDetectedBy:
+      - gg-evasiveness-detection
     tag: evasiveness
   - id: granite-groundedness
     name: Groundedness
@@ -10635,6 +10651,8 @@ entries:
     isDefinedByTaxonomy: ibm-granite-guardian
     isPartOf: granite-guardian-rag-safety-group
     type: Risk
+    isDetectedBy:
+      - gg-groundedness-detection
     tag: groundedness
   - id: granite-relevance
     name: Context Relevance
@@ -10651,6 +10669,8 @@ entries:
     isDefinedByTaxonomy: ibm-granite-guardian
     isPartOf: granite-guardian-rag-safety-group
     type: Risk
+    isDetectedBy:
+      - gg-relevance-detection
     tag: relevance
   - id: granite-answer-relevance
     name: Answer Relevance
@@ -10669,6 +10689,8 @@ entries:
     isDefinedByTaxonomy: ibm-granite-guardian
     isPartOf: granite-guardian-rag-safety-group
     type: Risk
+    isDetectedBy:
+      - gg-answer-relevance-detection
     tag: answer-relevance
   - id: granite-function-call
     name: Function Calling Hallucination
