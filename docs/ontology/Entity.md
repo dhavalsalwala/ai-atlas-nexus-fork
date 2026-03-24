@@ -114,6 +114,17 @@ URI: [schema:Thing](http://schema.org/Thing)
 
       Entity : id
 
+      Entity : isCategorizedAs
+
+
+
+
+
+        Entity --> "*" Any : isCategorizedAs
+        click Any href "../Any/"
+
+
+
       Entity : name
 
       Entity : narrow_mappings
@@ -193,6 +204,7 @@ URI: [schema:Thing](http://schema.org/Thing)
 | [related_mappings](related_mappings.md) | \* <br/> [Any](Any.md)         | The property skos:relatedMatch is used to state an associative mapping link b... | direct      |
 | [narrow_mappings](narrow_mappings.md)   | \* <br/> [Any](Any.md)         | The property is used to state a hierarchical mapping link between two concept... | direct      |
 | [broad_mappings](broad_mappings.md)     | \* <br/> [Any](Any.md)         | The property is used to state a hierarchical mapping link between two concept... | direct      |
+| [isCategorizedAs](isCategorizedAs.md)   | \* <br/> [Any](Any.md)         | A relationship where an entity has been deemed to be categorized                 | direct      |
 
 ## Mixin Usage
 
@@ -237,6 +249,7 @@ slots:
 - related_mappings
 - narrow_mappings
 - broad_mappings
+- isCategorizedAs
 class_uri: schema:Thing
 
 ````
@@ -391,6 +404,19 @@ attributes:
     rank: 1000
     slot_uri: skos:broadMatch
     alias: broad_mappings
+    owner: Entity
+    domain_of:
+    - Entity
+    range: Any
+    multivalued: true
+    inlined: false
+  isCategorizedAs:
+    name: isCategorizedAs
+    description: A relationship where an entity has been deemed to be categorized
+    from_schema: https://ibm.github.io/ai-atlas-nexus/ontology/ai-risk-ontology
+    rank: 1000
+    slot_uri: nexus:isCategorizedAs
+    alias: isCategorizedAs
     owner: Entity
     domain_of:
     - Entity

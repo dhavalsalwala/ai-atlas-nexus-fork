@@ -1,9 +1,7 @@
-# Slot: hasPart
+# Slot: narrower
 
-_A relationship where an entity has another entity_
-
-URI: [skos:member](http://www.w3.org/2004/02/skos/core#member)
-Alias: hasPart
+URI: [skos:narrower](http://www.w3.org/2004/02/skos/core#narrower)
+Alias: narrower
 
 <!-- no inheritance hierarchy -->
 
@@ -11,12 +9,12 @@ Alias: hasPart
 
 | Name                                    | Description                                                                      | Modifies Slot |
 | --------------------------------------- | -------------------------------------------------------------------------------- | ------------- |
-| [RiskControlGroup](RiskControlGroup.md) | A group of AI system related risk controls                                       | yes           |
+| [RiskControlGroup](RiskControlGroup.md) | A group of AI system related risk controls                                       | no            |
 | [Group](Group.md)                       | Labelled groups of concepts                                                      | no            |
-| [RiskGroup](RiskGroup.md)               | A group of AI system related risks that are part of a risk taxonomy              | yes           |
-| [CapabilityDomain](CapabilityDomain.md) | A high-level domain of AI capabilities (e                                        | yes           |
-| [CapabilityGroup](CapabilityGroup.md)   | A group of AI capabilities that are part of a capability taxonomy, organized ... | yes           |
+| [RiskGroup](RiskGroup.md)               | A group of AI system related risks that are part of a risk taxonomy              | no            |
+| [CapabilityDomain](CapabilityDomain.md) | A high-level domain of AI capabilities (e                                        | no            |
 | [StakeholderGroup](StakeholderGroup.md) | An AI system stakeholder grouping                                                | no            |
+| [CapabilityGroup](CapabilityGroup.md)   | A group of AI capabilities that are part of a capability taxonomy, organized ... | no            |
 
 ## Properties
 
@@ -32,26 +30,23 @@ Alias: hasPart
 
 ## Mappings
 
-| Mapping Type | Mapped Value  |
-| ------------ | ------------- |
-| self         | skos:member   |
-| native       | nexus:hasPart |
+| Mapping Type | Mapped Value   |
+| ------------ | -------------- |
+| self         | skos:narrower  |
+| native       | nexus:narrower |
 
 ## LinkML Source
 
 <details>
 ```yaml
-name: hasPart
-description: A relationship where an entity has another entity
+name: narrower
 from_schema: https://ibm.github.io/ai-atlas-nexus/ontology/ai-risk-ontology
 rank: 1000
-slot_uri: skos:member
-alias: hasPart
+slot_uri: skos:narrower
+alias: narrower
+owner: Group
 domain_of:
 - Group
-- RiskControlGroup
-- RiskGroup
-- CapabilityGroup
 range: string
 multivalued: true
 

@@ -1,9 +1,9 @@
-# Slot: related_mappings
+# Slot: isCategorizedAs
 
-_The property skos:relatedMatch is used to state an associative mapping link between two concepts._
+_A relationship where an entity has been deemed to be categorized_
 
-URI: [skos:relatedMatch](http://www.w3.org/2004/02/skos/core#relatedMatch)
-Alias: related_mappings
+URI: [nexus:isCategorizedAs](https://ibm.github.io/ai-atlas-nexus/ontology/isCategorizedAs)
+Alias: isCategorizedAs
 
 <!-- no inheritance hierarchy -->
 
@@ -109,22 +109,21 @@ Alias: related_mappings
 
 ## Mappings
 
-| Mapping Type | Mapped Value           |
-| ------------ | ---------------------- |
-| self         | skos:relatedMatch      |
-| native       | nexus:related_mappings |
+| Mapping Type | Mapped Value          |
+| ------------ | --------------------- |
+| self         | nexus:isCategorizedAs |
+| native       | nexus:isCategorizedAs |
 
 ## LinkML Source
 
 <details>
 ```yaml
-name: related_mappings
-description: The property skos:relatedMatch is used to state an associative mapping
-  link between two concepts.
+name: isCategorizedAs
+description: A relationship where an entity has been deemed to be categorized
 from_schema: https://ibm.github.io/ai-atlas-nexus/ontology/ai-risk-ontology
 rank: 1000
-slot_uri: skos:relatedMatch
-alias: related_mappings
+slot_uri: nexus:isCategorizedAs
+alias: isCategorizedAs
 domain_of:
 - Entity
 range: Any

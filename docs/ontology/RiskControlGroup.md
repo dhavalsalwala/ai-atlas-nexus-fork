@@ -1,156 +1,156 @@
-# Class: RiskGroup
+# Class: RiskControlGroup
 
-_A group of AI system related risks that are part of a risk taxonomy._
+_A group of AI system related risk controls._
 
-URI: [nexus:RiskGroup](https://ibm.github.io/ai-atlas-nexus/ontology/RiskGroup)
+URI: [nexus:RiskControlGroup](https://ibm.github.io/ai-atlas-nexus/ontology/RiskControlGroup)
 
 ```mermaid
  classDiagram
-    class RiskGroup
-    click RiskGroup href "../RiskGroup/"
-      RiskConcept <|-- RiskGroup
+    class RiskControlGroup
+    click RiskControlGroup href "../RiskControlGroup/"
+      RiskConcept <|-- RiskControlGroup
         click RiskConcept href "../RiskConcept/"
-      Group <|-- RiskGroup
+      Group <|-- RiskControlGroup
         click Group href "../Group/"
 
-      RiskGroup : belongsToDomain
+      RiskControlGroup : belongsToDomain
 
 
 
 
 
-        RiskGroup --> "0..1" Any : belongsToDomain
+        RiskControlGroup --> "0..1" Any : belongsToDomain
         click Any href "../Any/"
 
 
 
-      RiskGroup : broad_mappings
+      RiskControlGroup : broad_mappings
 
 
 
 
 
-        RiskGroup --> "*" Any : broad_mappings
+        RiskControlGroup --> "*" Any : broad_mappings
         click Any href "../Any/"
 
 
 
-      RiskGroup : broader
+      RiskControlGroup : broader
 
-      RiskGroup : close_mappings
-
-
+      RiskControlGroup : close_mappings
 
 
 
-        RiskGroup --> "*" Any : close_mappings
+
+
+        RiskControlGroup --> "*" Any : close_mappings
         click Any href "../Any/"
 
 
 
-      RiskGroup : dateCreated
+      RiskControlGroup : dateCreated
 
-      RiskGroup : dateModified
+      RiskControlGroup : dateModified
 
-      RiskGroup : description
+      RiskControlGroup : description
 
-      RiskGroup : exact_mappings
-
-
+      RiskControlGroup : exact_mappings
 
 
 
-        RiskGroup --> "*" Any : exact_mappings
+
+
+        RiskControlGroup --> "*" Any : exact_mappings
         click Any href "../Any/"
 
 
 
-      RiskGroup : hasDocumentation
+      RiskControlGroup : hasDocumentation
 
 
 
 
 
-        RiskGroup --> "*" Documentation : hasDocumentation
+        RiskControlGroup --> "*" Documentation : hasDocumentation
         click Documentation href "../Documentation/"
 
 
 
-      RiskGroup : hasPart
+      RiskControlGroup : hasPart
 
 
 
 
 
-        RiskGroup --> "*" Risk : hasPart
-        click Risk href "../Risk/"
-
-
-
-      RiskGroup : id
-
-      RiskGroup : isCategorizedAs
-
-
-
-
-
-        RiskGroup --> "*" Any : isCategorizedAs
-        click Any href "../Any/"
-
-
-
-      RiskGroup : isDefinedByTaxonomy
-
-
-
-
-
-        RiskGroup --> "0..1" Taxonomy : isDefinedByTaxonomy
-        click Taxonomy href "../Taxonomy/"
-
-
-
-      RiskGroup : isDetectedBy
-
-
-
-
-
-        RiskGroup --> "*" RiskControl : isDetectedBy
+        RiskControlGroup --> "*" RiskControl : hasPart
         click RiskControl href "../RiskControl/"
 
 
 
-      RiskGroup : name
+      RiskControlGroup : id
 
-      RiskGroup : narrow_mappings
-
-
+      RiskControlGroup : isCategorizedAs
 
 
 
-        RiskGroup --> "*" Any : narrow_mappings
+
+
+        RiskControlGroup --> "*" Any : isCategorizedAs
         click Any href "../Any/"
 
 
 
-      RiskGroup : narrower
-
-      RiskGroup : related_mappings
+      RiskControlGroup : isDefinedByTaxonomy
 
 
 
 
 
-        RiskGroup --> "*" Any : related_mappings
+        RiskControlGroup --> "0..1" Taxonomy : isDefinedByTaxonomy
+        click Taxonomy href "../Taxonomy/"
+
+
+
+      RiskControlGroup : isDetectedBy
+
+
+
+
+
+        RiskControlGroup --> "*" RiskControl : isDetectedBy
+        click RiskControl href "../RiskControl/"
+
+
+
+      RiskControlGroup : name
+
+      RiskControlGroup : narrow_mappings
+
+
+
+
+
+        RiskControlGroup --> "*" Any : narrow_mappings
         click Any href "../Any/"
 
 
 
-      RiskGroup : type
+      RiskControlGroup : narrower
 
-      RiskGroup : url
+      RiskControlGroup : related_mappings
+
+
+
+
+
+        RiskControlGroup --> "*" Any : related_mappings
+        click Any href "../Any/"
+
+
+
+      RiskControlGroup : type
+
+      RiskControlGroup : url
 
 
 ```
@@ -159,14 +159,14 @@ URI: [nexus:RiskGroup](https://ibm.github.io/ai-atlas-nexus/ontology/RiskGroup)
 
 - [Entity](Entity.md)
   - [Group](Group.md)
-    - **RiskGroup** [ [RiskConcept](RiskConcept.md)]
+    - **RiskControlGroup** [ [RiskConcept](RiskConcept.md)]
 
 ## Slots
 
 | Name                                          | Cardinality and Range                      | Description                                                                      | Inheritance                              |
 | --------------------------------------------- | ------------------------------------------ | -------------------------------------------------------------------------------- | ---------------------------------------- |
 | [isDefinedByTaxonomy](isDefinedByTaxonomy.md) | 0..1 <br/> [Taxonomy](Taxonomy.md)         | A relationship where a concept or a concept group is defined by a taxonomy       | direct                                   |
-| [hasPart](hasPart.md)                         | \* <br/> [Risk](Risk.md)                   | A relationship where a riskgroup has a risk                                      | direct                                   |
+| [hasPart](hasPart.md)                         | \* <br/> [RiskControl](RiskControl.md)     | A relationship where a riskcontrolgroup has a risk control                       | direct                                   |
 | [isDetectedBy](isDetectedBy.md)               | \* <br/> [RiskControl](RiskControl.md)     | A relationship where a risk, risk source, consequence, or impact is detected ... | [RiskConcept](RiskConcept.md)            |
 | [hasDocumentation](hasDocumentation.md)       | \* <br/> [Documentation](Documentation.md) | Indicates documentation associated with an entity                                | [Concept](Concept.md), [Group](Group.md) |
 | [belongsToDomain](belongsToDomain.md)         | 0..1 <br/> [Any](Any.md)                   | A relationship where a group belongs to a domain                                 | [Group](Group.md)                        |
@@ -186,12 +186,6 @@ URI: [nexus:RiskGroup](https://ibm.github.io/ai-atlas-nexus/ontology/RiskGroup)
 | [broad_mappings](broad_mappings.md)           | \* <br/> [Any](Any.md)                     | The property is used to state a hierarchical mapping link between two concept... | [Entity](Entity.md)                      |
 | [isCategorizedAs](isCategorizedAs.md)         | \* <br/> [Any](Any.md)                     | A relationship where an entity has been deemed to be categorized                 | [Entity](Entity.md)                      |
 
-## Usages
-
-| used by         | used in                 | type  | used                      |
-| --------------- | ----------------------- | ----- | ------------------------- |
-| [Risk](Risk.md) | [isPartOf](isPartOf.md) | range | [RiskGroup](RiskGroup.md) |
-
 ## Identifier and Mapping Information
 
 ### Schema Source
@@ -200,10 +194,10 @@ URI: [nexus:RiskGroup](https://ibm.github.io/ai-atlas-nexus/ontology/RiskGroup)
 
 ## Mappings
 
-| Mapping Type | Mapped Value    |
-| ------------ | --------------- |
-| self         | nexus:RiskGroup |
-| native       | nexus:RiskGroup |
+| Mapping Type | Mapped Value           |
+| ------------ | ---------------------- |
+| self         | nexus:RiskControlGroup |
+| native       | nexus:RiskControlGroup |
 
 ## LinkML Source
 
@@ -213,8 +207,8 @@ URI: [nexus:RiskGroup](https://ibm.github.io/ai-atlas-nexus/ontology/RiskGroup)
 
 <details>
 ```yaml
-name: RiskGroup
-description: A group of AI system related risks that are part of a risk taxonomy.
+name: RiskControlGroup
+description: A group of AI system related risk controls.
 from_schema: https://ibm.github.io/ai-atlas-nexus/ontology/ai-risk-ontology
 is_a: Group
 mixins:
@@ -225,8 +219,8 @@ slots:
 slot_usage:
   hasPart:
     name: hasPart
-    description: A relationship where a riskgroup has a risk
-    range: Risk
+    description: A relationship where a riskcontrolgroup has a risk control
+    range: RiskControl
 
 ````
 </details>
@@ -235,8 +229,8 @@ slot_usage:
 
 <details>
 ```yaml
-name: RiskGroup
-description: A group of AI system related risks that are part of a risk taxonomy.
+name: RiskControlGroup
+description: A group of AI system related risk controls.
 from_schema: https://ibm.github.io/ai-atlas-nexus/ontology/ai-risk-ontology
 is_a: Group
 mixins:
@@ -244,8 +238,8 @@ mixins:
 slot_usage:
   hasPart:
     name: hasPart
-    description: A relationship where a riskgroup has a risk
-    range: Risk
+    description: A relationship where a riskcontrolgroup has a risk control
+    range: RiskControl
 attributes:
   isDefinedByTaxonomy:
     name: isDefinedByTaxonomy
@@ -255,7 +249,7 @@ attributes:
     rank: 1000
     slot_uri: schema:isPartOf
     alias: isDefinedByTaxonomy
-    owner: RiskGroup
+    owner: RiskControlGroup
     domain_of:
     - Concept
     - Control
@@ -276,18 +270,18 @@ attributes:
     range: Taxonomy
   hasPart:
     name: hasPart
-    description: A relationship where a riskgroup has a risk
+    description: A relationship where a riskcontrolgroup has a risk control
     from_schema: https://ibm.github.io/ai-atlas-nexus/ontology/ai-risk-ontology
     rank: 1000
     slot_uri: skos:member
     alias: hasPart
-    owner: RiskGroup
+    owner: RiskControlGroup
     domain_of:
     - Group
     - RiskControlGroup
     - RiskGroup
     - CapabilityGroup
-    range: Risk
+    range: RiskControl
     multivalued: true
   isDetectedBy:
     name: isDetectedBy
@@ -297,7 +291,7 @@ attributes:
     rank: 1000
     domain: RiskConcept
     alias: isDetectedBy
-    owner: RiskGroup
+    owner: RiskControlGroup
     domain_of:
     - RiskConcept
     inverse: detectsRiskConcept
@@ -311,7 +305,7 @@ attributes:
     rank: 1000
     slot_uri: airo:hasDocumentation
     alias: hasDocumentation
-    owner: RiskGroup
+    owner: RiskControlGroup
     domain_of:
     - Dataset
     - Vocabulary
@@ -340,7 +334,7 @@ attributes:
     rank: 1000
     slot_uri: schema:isPartOf
     alias: belongsToDomain
-    owner: RiskGroup
+    owner: RiskControlGroup
     domain_of:
     - Group
     - CapabilityGroup
@@ -353,7 +347,7 @@ attributes:
     ifabsent: string(Group)
     designates_type: true
     alias: type
-    owner: RiskGroup
+    owner: RiskControlGroup
     domain_of:
     - Vocabulary
     - Taxonomy
@@ -381,7 +375,7 @@ attributes:
     rank: 1000
     slot_uri: skos:narrower
     alias: narrower
-    owner: RiskGroup
+    owner: RiskControlGroup
     domain_of:
     - Group
     range: string
@@ -392,7 +386,7 @@ attributes:
     rank: 1000
     slot_uri: skos:narrower
     alias: broader
-    owner: RiskGroup
+    owner: RiskControlGroup
     domain_of:
     - Group
     range: string
@@ -406,7 +400,7 @@ attributes:
     slot_uri: schema:identifier
     identifier: true
     alias: id
-    owner: RiskGroup
+    owner: RiskControlGroup
     domain_of:
     - Entity
     range: string
@@ -418,7 +412,7 @@ attributes:
     rank: 1000
     slot_uri: schema:name
     alias: name
-    owner: RiskGroup
+    owner: RiskControlGroup
     domain_of:
     - Entity
     - BenchmarkMetadataCard
@@ -430,7 +424,7 @@ attributes:
     rank: 1000
     slot_uri: schema:description
     alias: description
-    owner: RiskGroup
+    owner: RiskControlGroup
     domain_of:
     - Entity
     range: string
@@ -441,7 +435,7 @@ attributes:
     rank: 1000
     slot_uri: schema:url
     alias: url
-    owner: RiskGroup
+    owner: RiskControlGroup
     domain_of:
     - Entity
     range: uri
@@ -452,7 +446,7 @@ attributes:
     rank: 1000
     slot_uri: schema:dateCreated
     alias: dateCreated
-    owner: RiskGroup
+    owner: RiskControlGroup
     domain_of:
     - Entity
     range: date
@@ -464,7 +458,7 @@ attributes:
     rank: 1000
     slot_uri: schema:dateModified
     alias: dateModified
-    owner: RiskGroup
+    owner: RiskControlGroup
     domain_of:
     - Entity
     range: date
@@ -478,7 +472,7 @@ attributes:
     rank: 1000
     slot_uri: skos:exactMatch
     alias: exact_mappings
-    owner: RiskGroup
+    owner: RiskControlGroup
     domain_of:
     - Entity
     range: Any
@@ -492,7 +486,7 @@ attributes:
     rank: 1000
     slot_uri: skos:closeMatch
     alias: close_mappings
-    owner: RiskGroup
+    owner: RiskControlGroup
     domain_of:
     - Entity
     range: Any
@@ -506,7 +500,7 @@ attributes:
     rank: 1000
     slot_uri: skos:relatedMatch
     alias: related_mappings
-    owner: RiskGroup
+    owner: RiskControlGroup
     domain_of:
     - Entity
     range: Any
@@ -521,7 +515,7 @@ attributes:
     rank: 1000
     slot_uri: skos:narrowMatch
     alias: narrow_mappings
-    owner: RiskGroup
+    owner: RiskControlGroup
     domain_of:
     - Entity
     range: Any
@@ -536,7 +530,7 @@ attributes:
     rank: 1000
     slot_uri: skos:broadMatch
     alias: broad_mappings
-    owner: RiskGroup
+    owner: RiskControlGroup
     domain_of:
     - Entity
     range: Any
@@ -549,7 +543,7 @@ attributes:
     rank: 1000
     slot_uri: nexus:isCategorizedAs
     alias: isCategorizedAs
-    owner: RiskGroup
+    owner: RiskControlGroup
     domain_of:
     - Entity
     range: Any

@@ -1,119 +1,119 @@
-# Class: CapabilityTaxonomy
+# Class: RiskControlGroupTaxonomy
 
-_A taxonomy of AI capabilities describing the abilities of AI systems._
+_A taxonomy of AI system related risk controls groups_
 
-URI: [skos:ConceptScheme](http://www.w3.org/2004/02/skos/core#ConceptScheme)
+URI: [nexus:RiskControlGroupTaxonomy](https://ibm.github.io/ai-atlas-nexus/ontology/RiskControlGroupTaxonomy)
 
 ```mermaid
  classDiagram
-    class CapabilityTaxonomy
-    click CapabilityTaxonomy href "../CapabilityTaxonomy/"
-      Taxonomy <|-- CapabilityTaxonomy
+    class RiskControlGroupTaxonomy
+    click RiskControlGroupTaxonomy href "../RiskControlGroupTaxonomy/"
+      Taxonomy <|-- RiskControlGroupTaxonomy
         click Taxonomy href "../Taxonomy/"
 
-      CapabilityTaxonomy : broad_mappings
+      RiskControlGroupTaxonomy : broad_mappings
 
 
 
 
 
-        CapabilityTaxonomy --> "*" Any : broad_mappings
+        RiskControlGroupTaxonomy --> "*" Any : broad_mappings
         click Any href "../Any/"
 
 
 
-      CapabilityTaxonomy : close_mappings
+      RiskControlGroupTaxonomy : close_mappings
 
 
 
 
 
-        CapabilityTaxonomy --> "*" Any : close_mappings
+        RiskControlGroupTaxonomy --> "*" Any : close_mappings
         click Any href "../Any/"
 
 
 
-      CapabilityTaxonomy : dateCreated
+      RiskControlGroupTaxonomy : dateCreated
 
-      CapabilityTaxonomy : dateModified
+      RiskControlGroupTaxonomy : dateModified
 
-      CapabilityTaxonomy : description
+      RiskControlGroupTaxonomy : description
 
-      CapabilityTaxonomy : exact_mappings
-
-
+      RiskControlGroupTaxonomy : exact_mappings
 
 
 
-        CapabilityTaxonomy --> "*" Any : exact_mappings
+
+
+        RiskControlGroupTaxonomy --> "*" Any : exact_mappings
         click Any href "../Any/"
 
 
 
-      CapabilityTaxonomy : hasDocumentation
+      RiskControlGroupTaxonomy : hasDocumentation
 
 
 
 
 
-        CapabilityTaxonomy --> "*" Documentation : hasDocumentation
+        RiskControlGroupTaxonomy --> "*" Documentation : hasDocumentation
         click Documentation href "../Documentation/"
 
 
 
-      CapabilityTaxonomy : hasLicense
+      RiskControlGroupTaxonomy : hasLicense
 
 
 
 
 
-        CapabilityTaxonomy --> "0..1" License : hasLicense
+        RiskControlGroupTaxonomy --> "0..1" License : hasLicense
         click License href "../License/"
 
 
 
-      CapabilityTaxonomy : id
+      RiskControlGroupTaxonomy : id
 
-      CapabilityTaxonomy : isCategorizedAs
-
-
+      RiskControlGroupTaxonomy : isCategorizedAs
 
 
 
-        CapabilityTaxonomy --> "*" Any : isCategorizedAs
+
+
+        RiskControlGroupTaxonomy --> "*" Any : isCategorizedAs
         click Any href "../Any/"
 
 
 
-      CapabilityTaxonomy : name
+      RiskControlGroupTaxonomy : name
 
-      CapabilityTaxonomy : narrow_mappings
-
-
+      RiskControlGroupTaxonomy : narrow_mappings
 
 
 
-        CapabilityTaxonomy --> "*" Any : narrow_mappings
+
+
+        RiskControlGroupTaxonomy --> "*" Any : narrow_mappings
         click Any href "../Any/"
 
 
 
-      CapabilityTaxonomy : related_mappings
+      RiskControlGroupTaxonomy : related_mappings
 
 
 
 
 
-        CapabilityTaxonomy --> "*" Any : related_mappings
+        RiskControlGroupTaxonomy --> "*" Any : related_mappings
         click Any href "../Any/"
 
 
 
-      CapabilityTaxonomy : type
+      RiskControlGroupTaxonomy : type
 
-      CapabilityTaxonomy : url
+      RiskControlGroupTaxonomy : url
 
-      CapabilityTaxonomy : version
+      RiskControlGroupTaxonomy : version
 
 
 ```
@@ -122,15 +122,15 @@ URI: [skos:ConceptScheme](http://www.w3.org/2004/02/skos/core#ConceptScheme)
 
 - [Entity](Entity.md)
   - [Taxonomy](Taxonomy.md)
-    - **CapabilityTaxonomy**
+    - **RiskControlGroupTaxonomy**
 
 ## Slots
 
 | Name                                    | Cardinality and Range                      | Description                                                                      | Inheritance             |
 | --------------------------------------- | ------------------------------------------ | -------------------------------------------------------------------------------- | ----------------------- |
-| [version](version.md)                   | 0..1 <br/> [String](String.md)             | The version of the entity embodied by a specified resource                       | [Taxonomy](Taxonomy.md) |
-| [hasDocumentation](hasDocumentation.md) | \* <br/> [Documentation](Documentation.md) | Indicates documentation associated with an entity                                | [Taxonomy](Taxonomy.md) |
-| [hasLicense](hasLicense.md)             | 0..1 <br/> [License](License.md)           | Indicates licenses associated with a resource                                    | [Taxonomy](Taxonomy.md) |
+| [version](version.md)                   | 0..1 <br/> [String](String.md)             | The version of the entity embodied by a specified resource                       | direct                  |
+| [hasDocumentation](hasDocumentation.md) | \* <br/> [Documentation](Documentation.md) | Indicates documentation associated with an entity                                | direct                  |
+| [hasLicense](hasLicense.md)             | 0..1 <br/> [License](License.md)           | Indicates licenses associated with a resource                                    | direct                  |
 | [type](type.md)                         | 0..1 <br/> [String](String.md)             |                                                                                  | [Taxonomy](Taxonomy.md) |
 | [id](id.md)                             | 1 <br/> [String](String.md)                | A unique identifier to this instance of the model element                        | [Entity](Entity.md)     |
 | [name](name.md)                         | 0..1 <br/> [String](String.md)             | A text name of this instance                                                     | [Entity](Entity.md)     |
@@ -153,10 +153,10 @@ URI: [skos:ConceptScheme](http://www.w3.org/2004/02/skos/core#ConceptScheme)
 
 ## Mappings
 
-| Mapping Type | Mapped Value             |
-| ------------ | ------------------------ |
-| self         | skos:ConceptScheme       |
-| native       | nexus:CapabilityTaxonomy |
+| Mapping Type | Mapped Value                   |
+| ------------ | ------------------------------ |
+| self         | nexus:RiskControlGroupTaxonomy |
+| native       | nexus:RiskControlGroupTaxonomy |
 
 ## LinkML Source
 
@@ -166,11 +166,14 @@ URI: [skos:ConceptScheme](http://www.w3.org/2004/02/skos/core#ConceptScheme)
 
 <details>
 ```yaml
-name: CapabilityTaxonomy
-description: A taxonomy of AI capabilities describing the abilities of AI systems.
+name: RiskControlGroupTaxonomy
+description: A taxonomy of AI system related risk controls groups
 from_schema: https://ibm.github.io/ai-atlas-nexus/ontology/ai-risk-ontology
 is_a: Taxonomy
-class_uri: skos:ConceptScheme
+slots:
+- version
+- hasDocumentation
+- hasLicense
 
 ````
 </details>
@@ -179,8 +182,8 @@ class_uri: skos:ConceptScheme
 
 <details>
 ```yaml
-name: CapabilityTaxonomy
-description: A taxonomy of AI capabilities describing the abilities of AI systems.
+name: RiskControlGroupTaxonomy
+description: A taxonomy of AI system related risk controls groups
 from_schema: https://ibm.github.io/ai-atlas-nexus/ontology/ai-risk-ontology
 is_a: Taxonomy
 attributes:
@@ -191,7 +194,7 @@ attributes:
     rank: 1000
     slot_uri: schema:version
     alias: version
-    owner: CapabilityTaxonomy
+    owner: RiskControlGroupTaxonomy
     domain_of:
     - License
     - Vocabulary
@@ -206,7 +209,7 @@ attributes:
     rank: 1000
     slot_uri: airo:hasDocumentation
     alias: hasDocumentation
-    owner: CapabilityTaxonomy
+    owner: RiskControlGroupTaxonomy
     domain_of:
     - Dataset
     - Vocabulary
@@ -235,7 +238,7 @@ attributes:
     rank: 1000
     slot_uri: airo:hasLicense
     alias: hasLicense
-    owner: CapabilityTaxonomy
+    owner: RiskControlGroupTaxonomy
     domain_of:
     - Dataset
     - Documentation
@@ -253,7 +256,7 @@ attributes:
     from_schema: https://ibm.github.io/ai-atlas-nexus/ontology/common
     designates_type: true
     alias: type
-    owner: CapabilityTaxonomy
+    owner: RiskControlGroupTaxonomy
     domain_of:
     - Vocabulary
     - Taxonomy
@@ -284,7 +287,7 @@ attributes:
     slot_uri: schema:identifier
     identifier: true
     alias: id
-    owner: CapabilityTaxonomy
+    owner: RiskControlGroupTaxonomy
     domain_of:
     - Entity
     range: string
@@ -296,7 +299,7 @@ attributes:
     rank: 1000
     slot_uri: schema:name
     alias: name
-    owner: CapabilityTaxonomy
+    owner: RiskControlGroupTaxonomy
     domain_of:
     - Entity
     - BenchmarkMetadataCard
@@ -308,7 +311,7 @@ attributes:
     rank: 1000
     slot_uri: schema:description
     alias: description
-    owner: CapabilityTaxonomy
+    owner: RiskControlGroupTaxonomy
     domain_of:
     - Entity
     range: string
@@ -319,7 +322,7 @@ attributes:
     rank: 1000
     slot_uri: schema:url
     alias: url
-    owner: CapabilityTaxonomy
+    owner: RiskControlGroupTaxonomy
     domain_of:
     - Entity
     range: uri
@@ -330,7 +333,7 @@ attributes:
     rank: 1000
     slot_uri: schema:dateCreated
     alias: dateCreated
-    owner: CapabilityTaxonomy
+    owner: RiskControlGroupTaxonomy
     domain_of:
     - Entity
     range: date
@@ -342,7 +345,7 @@ attributes:
     rank: 1000
     slot_uri: schema:dateModified
     alias: dateModified
-    owner: CapabilityTaxonomy
+    owner: RiskControlGroupTaxonomy
     domain_of:
     - Entity
     range: date
@@ -356,7 +359,7 @@ attributes:
     rank: 1000
     slot_uri: skos:exactMatch
     alias: exact_mappings
-    owner: CapabilityTaxonomy
+    owner: RiskControlGroupTaxonomy
     domain_of:
     - Entity
     range: Any
@@ -370,7 +373,7 @@ attributes:
     rank: 1000
     slot_uri: skos:closeMatch
     alias: close_mappings
-    owner: CapabilityTaxonomy
+    owner: RiskControlGroupTaxonomy
     domain_of:
     - Entity
     range: Any
@@ -384,7 +387,7 @@ attributes:
     rank: 1000
     slot_uri: skos:relatedMatch
     alias: related_mappings
-    owner: CapabilityTaxonomy
+    owner: RiskControlGroupTaxonomy
     domain_of:
     - Entity
     range: Any
@@ -399,7 +402,7 @@ attributes:
     rank: 1000
     slot_uri: skos:narrowMatch
     alias: narrow_mappings
-    owner: CapabilityTaxonomy
+    owner: RiskControlGroupTaxonomy
     domain_of:
     - Entity
     range: Any
@@ -414,7 +417,7 @@ attributes:
     rank: 1000
     slot_uri: skos:broadMatch
     alias: broad_mappings
-    owner: CapabilityTaxonomy
+    owner: RiskControlGroupTaxonomy
     domain_of:
     - Entity
     range: Any
@@ -427,13 +430,12 @@ attributes:
     rank: 1000
     slot_uri: nexus:isCategorizedAs
     alias: isCategorizedAs
-    owner: CapabilityTaxonomy
+    owner: RiskControlGroupTaxonomy
     domain_of:
     - Entity
     range: Any
     multivalued: true
     inlined: false
-class_uri: skos:ConceptScheme
 
 ````
 
