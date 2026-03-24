@@ -11,9 +11,9 @@ Alias: hasTasks
 
 | Name                                              | Description                                                                      | Modifies Slot |
 | ------------------------------------------------- | -------------------------------------------------------------------------------- | ------------- |
-| [Question](Question.md)                           | An evaluation where a question has to be answered                                | no            |
-| [Questionnaire](Questionnaire.md)                 | A questionnaire groups questions                                                 | no            |
 | [BenchmarkMetadataCard](BenchmarkMetadataCard.md) | Benchmark metadata cards offer a standardized way to document LLM benchmarks ... | no            |
+| [Questionnaire](Questionnaire.md)                 | A questionnaire groups questions                                                 | no            |
+| [Question](Question.md)                           | An evaluation where a question has to be answered                                | no            |
 | [AiEval](AiEval.md)                               | An AI Evaluation, e                                                              | no            |
 
 ## Properties
