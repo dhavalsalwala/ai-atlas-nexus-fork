@@ -209,6 +209,17 @@ URI: [nexus:Adapter](https://ibm.github.io/ai-atlas-nexus/ontology/Adapter)
 
 
 
+      Adapter : isCategorizedAs
+
+
+
+
+
+        Adapter --> "*" Any : isCategorizedAs
+        click Any href "../Any/"
+
+
+
       Adapter : isDefinedByTaxonomy
 
 
@@ -363,7 +374,7 @@ URI: [nexus:Adapter](https://ibm.github.io/ai-atlas-nexus/ontology/Adapter)
 | [hasTrainingData](hasTrainingData.md)             | \* <br/> [Dataset](Dataset.md)                                                                               | A relationship indicating the datasets an AI model was trained on                | [LargeLanguageModel](LargeLanguageModel.md)                    |
 | [fine_tuning](fine_tuning.md)                     | 0..1 <br/> [String](String.md)                                                                               | A description of the fine-tuning mechanism(s) applied to a model                 | [LargeLanguageModel](LargeLanguageModel.md)                    |
 | [supported_languages](supported_languages.md)     | \* <br/> [String](String.md)                                                                                 | A list of languages, expressed as ISO two letter codes                           | [LargeLanguageModel](LargeLanguageModel.md)                    |
-| [isPartOf](isPartOf.md)                           | 0..1 <br/> [LargeLanguageModelFamily](LargeLanguageModelFamily.md)                                           | Annotation that a Large Language model is part of a family of models             | [LargeLanguageModel](LargeLanguageModel.md), [Entry](Entry.md) |
+| [isPartOf](isPartOf.md)                           | 0..1 <br/> [LargeLanguageModelFamily](LargeLanguageModelFamily.md)                                           | Annotation that a Large Language model is part of a family of models             | [Entry](Entry.md), [LargeLanguageModel](LargeLanguageModel.md) |
 | [isDefinedByTaxonomy](isDefinedByTaxonomy.md)     | 0..1 <br/> [Taxonomy](Taxonomy.md)                                                                           | A relationship where a concept or a concept group is defined by a taxonomy       | [Entry](Entry.md)                                              |
 | [requiredByTask](requiredByTask.md)               | \* <br/> [AiTask](AiTask.md)                                                                                 | Indicates that this entry is required to perform a specific AI task              | [Entry](Entry.md)                                              |
 | [implementedByAdapter](implementedByAdapter.md)   | \* <br/> [Adapter](Adapter.md)                                                                               | Indicates that this capability is implemented by a specific adapter              | [Entry](Entry.md)                                              |
@@ -379,6 +390,7 @@ URI: [nexus:Adapter](https://ibm.github.io/ai-atlas-nexus/ontology/Adapter)
 | [related_mappings](related_mappings.md)           | \* <br/> [Any](Any.md)                                                                                       | The property skos:relatedMatch is used to state an associative mapping link b... | [Entity](Entity.md)                                            |
 | [narrow_mappings](narrow_mappings.md)             | \* <br/> [Any](Any.md)                                                                                       | The property is used to state a hierarchical mapping link between two concept... | [Entity](Entity.md)                                            |
 | [broad_mappings](broad_mappings.md)               | \* <br/> [Any](Any.md)                                                                                       | The property is used to state a hierarchical mapping link between two concept... | [Entity](Entity.md)                                            |
+| [isCategorizedAs](isCategorizedAs.md)             | \* <br/> [Any](Any.md)                                                                                       | A relationship where an entity has been deemed to be categorized                 | [Entity](Entity.md)                                            |
 | [hasEvaluation](hasEvaluation.md)                 | \* <br/> [AiEvalResult](AiEvalResult.md)                                                                     | A relationship indicating that an entity has an AI evaluation result             | [AiModel](AiModel.md)                                          |
 | [architecture](architecture.md)                   | 0..1 <br/> [String](String.md)                                                                               | A description of the architecture of an AI such as 'Decoder-only'                | [AiModel](AiModel.md)                                          |
 | [gpu_hours](gpu_hours.md)                         | 0..1 <br/> [Integer](Integer.md)                                                                             | GPU consumption in terms of hours                                                | [AiModel](AiModel.md)                                          |
@@ -510,6 +522,7 @@ attributes:
     - Term
     - Principle
     - RiskTaxonomy
+    - RiskControlGroupTaxonomy
     - Action
     - BaseAi
     - LargeLanguageModelFamily
@@ -534,6 +547,7 @@ attributes:
     - Vocabulary
     - Taxonomy
     - RiskTaxonomy
+    - RiskControlGroupTaxonomy
     - BaseAi
     - AiEval
     - BenchmarkMetadataCard
@@ -747,6 +761,7 @@ attributes:
     - Entry
     - Policy
     - Rule
+    - RiskControlGroup
     - RiskGroup
     - Risk
     - RiskControl
@@ -773,11 +788,9 @@ attributes:
     inlined: false
   implementedByAdapter:
     name: implementedByAdapter
-    description: 'Indicates that this capability is implemented by a specific adapter.
+    description: Indicates that this capability is implemented by a specific adapter.
       This relationship distinguishes the abstract capability (what can be done) from
       the technical implementation mechanism (how it is added/extended via adapters).
-
-      '
     from_schema: https://ibm.github.io/ai-atlas-nexus/ontology/ai-risk-ontology
     rank: 1000
     domain: Any
@@ -957,6 +970,19 @@ attributes:
     rank: 1000
     slot_uri: skos:broadMatch
     alias: broad_mappings
+    owner: Adapter
+    domain_of:
+    - Entity
+    range: Any
+    multivalued: true
+    inlined: false
+  isCategorizedAs:
+    name: isCategorizedAs
+    description: A relationship where an entity has been deemed to be categorized
+    from_schema: https://ibm.github.io/ai-atlas-nexus/ontology/ai-risk-ontology
+    rank: 1000
+    slot_uri: nexus:isCategorizedAs
+    alias: isCategorizedAs
     owner: Adapter
     domain_of:
     - Entity

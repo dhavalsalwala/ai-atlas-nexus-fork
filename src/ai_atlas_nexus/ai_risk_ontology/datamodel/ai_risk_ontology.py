@@ -245,6 +245,7 @@ class Entity(ConfiguredBaseModel):
     related_mappings: Optional[list[Any]] = Field(default=[], description="""The property skos:relatedMatch is used to state an associative mapping link between two concepts.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:relatedMatch'} })
     narrow_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a narrower concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:narrowMatch'} })
     broad_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a broader concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:broadMatch'} })
+    isCategorizedAs: Optional[list[Any]] = Field(default=[], description="""A relationship where an entity has been deemed to be categorized""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'nexus:isCategorizedAs'} })
 
 
 class Organization(Entity):
@@ -266,6 +267,7 @@ class Organization(Entity):
     related_mappings: Optional[list[Any]] = Field(default=[], description="""The property skos:relatedMatch is used to state an associative mapping link between two concepts.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:relatedMatch'} })
     narrow_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a narrower concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:narrowMatch'} })
     broad_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a broader concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:broadMatch'} })
+    isCategorizedAs: Optional[list[Any]] = Field(default=[], description="""A relationship where an entity has been deemed to be categorized""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'nexus:isCategorizedAs'} })
 
 
 class License(Entity):
@@ -275,7 +277,11 @@ class License(Entity):
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'airo:License',
          'from_schema': 'https://ibm.github.io/ai-atlas-nexus/ontology/common'})
 
-    version: Optional[str] = Field(default=None, description="""The version of the entity embodied by a specified resource.""", json_schema_extra = { "linkml_meta": {'domain_of': ['License', 'Vocabulary', 'Taxonomy', 'RiskTaxonomy'],
+    version: Optional[str] = Field(default=None, description="""The version of the entity embodied by a specified resource.""", json_schema_extra = { "linkml_meta": {'domain_of': ['License',
+                       'Vocabulary',
+                       'Taxonomy',
+                       'RiskTaxonomy',
+                       'RiskControlGroupTaxonomy'],
          'slot_uri': 'schema:version'} })
     id: str = Field(default=..., description="""A unique identifier to this instance of the model element. Example identifiers include UUID, URI, URN, etc.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'schema:identifier'} })
     name: Optional[str] = Field(default=None, description="""A text name of this instance.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity', 'BenchmarkMetadataCard'], 'slot_uri': 'schema:name'} })
@@ -288,6 +294,7 @@ class License(Entity):
     related_mappings: Optional[list[Any]] = Field(default=[], description="""The property skos:relatedMatch is used to state an associative mapping link between two concepts.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:relatedMatch'} })
     narrow_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a narrower concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:narrowMatch'} })
     broad_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a broader concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:broadMatch'} })
+    isCategorizedAs: Optional[list[Any]] = Field(default=[], description="""A relationship where an entity has been deemed to be categorized""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'nexus:isCategorizedAs'} })
 
 
 class Dataset(Entity):
@@ -302,6 +309,7 @@ class Dataset(Entity):
                        'Vocabulary',
                        'Taxonomy',
                        'RiskTaxonomy',
+                       'RiskControlGroupTaxonomy',
                        'BaseAi',
                        'AiEval',
                        'BenchmarkMetadataCard',
@@ -316,6 +324,7 @@ class Dataset(Entity):
                        'Term',
                        'Principle',
                        'RiskTaxonomy',
+                       'RiskControlGroupTaxonomy',
                        'Action',
                        'BaseAi',
                        'LargeLanguageModelFamily',
@@ -336,6 +345,7 @@ class Dataset(Entity):
     related_mappings: Optional[list[Any]] = Field(default=[], description="""The property skos:relatedMatch is used to state an associative mapping link between two concepts.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:relatedMatch'} })
     narrow_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a narrower concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:narrowMatch'} })
     broad_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a broader concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:broadMatch'} })
+    isCategorizedAs: Optional[list[Any]] = Field(default=[], description="""A relationship where an entity has been deemed to be categorized""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'nexus:isCategorizedAs'} })
 
 
 class Documentation(Entity):
@@ -350,6 +360,7 @@ class Documentation(Entity):
                        'Vocabulary',
                        'Taxonomy',
                        'RiskTaxonomy',
+                       'RiskControlGroupTaxonomy',
                        'BaseAi',
                        'AiEval',
                        'BenchmarkMetadataCard',
@@ -367,6 +378,7 @@ class Documentation(Entity):
     related_mappings: Optional[list[Any]] = Field(default=[], description="""The property skos:relatedMatch is used to state an associative mapping link between two concepts.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:relatedMatch'} })
     narrow_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a narrower concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:narrowMatch'} })
     broad_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a broader concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:broadMatch'} })
+    isCategorizedAs: Optional[list[Any]] = Field(default=[], description="""A relationship where an entity has been deemed to be categorized""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'nexus:isCategorizedAs'} })
 
 
 class Fact(ConfiguredBaseModel):
@@ -389,7 +401,11 @@ class Vocabulary(Entity):
          'from_schema': 'https://ibm.github.io/ai-atlas-nexus/ontology/common',
          'mixin': True})
 
-    version: Optional[str] = Field(default=None, description="""The version of the entity embodied by a specified resource.""", json_schema_extra = { "linkml_meta": {'domain_of': ['License', 'Vocabulary', 'Taxonomy', 'RiskTaxonomy'],
+    version: Optional[str] = Field(default=None, description="""The version of the entity embodied by a specified resource.""", json_schema_extra = { "linkml_meta": {'domain_of': ['License',
+                       'Vocabulary',
+                       'Taxonomy',
+                       'RiskTaxonomy',
+                       'RiskControlGroupTaxonomy'],
          'slot_uri': 'schema:version'} })
     hasDocumentation: Optional[list[str]] = Field(default=[], description="""Indicates documentation associated with an entity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Dataset',
                        'Vocabulary',
@@ -400,6 +416,7 @@ class Vocabulary(Entity):
                        'Term',
                        'Principle',
                        'RiskTaxonomy',
+                       'RiskControlGroupTaxonomy',
                        'Action',
                        'BaseAi',
                        'LargeLanguageModelFamily',
@@ -413,6 +430,7 @@ class Vocabulary(Entity):
                        'Vocabulary',
                        'Taxonomy',
                        'RiskTaxonomy',
+                       'RiskControlGroupTaxonomy',
                        'BaseAi',
                        'AiEval',
                        'BenchmarkMetadataCard',
@@ -449,6 +467,7 @@ class Vocabulary(Entity):
     related_mappings: Optional[list[Any]] = Field(default=[], description="""The property skos:relatedMatch is used to state an associative mapping link between two concepts.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:relatedMatch'} })
     narrow_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a narrower concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:narrowMatch'} })
     broad_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a broader concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:broadMatch'} })
+    isCategorizedAs: Optional[list[Any]] = Field(default=[], description="""A relationship where an entity has been deemed to be categorized""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'nexus:isCategorizedAs'} })
 
 
 class Taxonomy(Entity):
@@ -460,7 +479,11 @@ class Taxonomy(Entity):
          'from_schema': 'https://ibm.github.io/ai-atlas-nexus/ontology/common',
          'mixin': True})
 
-    version: Optional[str] = Field(default=None, description="""The version of the entity embodied by a specified resource.""", json_schema_extra = { "linkml_meta": {'domain_of': ['License', 'Vocabulary', 'Taxonomy', 'RiskTaxonomy'],
+    version: Optional[str] = Field(default=None, description="""The version of the entity embodied by a specified resource.""", json_schema_extra = { "linkml_meta": {'domain_of': ['License',
+                       'Vocabulary',
+                       'Taxonomy',
+                       'RiskTaxonomy',
+                       'RiskControlGroupTaxonomy'],
          'slot_uri': 'schema:version'} })
     hasDocumentation: Optional[list[str]] = Field(default=[], description="""Indicates documentation associated with an entity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Dataset',
                        'Vocabulary',
@@ -471,6 +494,7 @@ class Taxonomy(Entity):
                        'Term',
                        'Principle',
                        'RiskTaxonomy',
+                       'RiskControlGroupTaxonomy',
                        'Action',
                        'BaseAi',
                        'LargeLanguageModelFamily',
@@ -484,6 +508,7 @@ class Taxonomy(Entity):
                        'Vocabulary',
                        'Taxonomy',
                        'RiskTaxonomy',
+                       'RiskControlGroupTaxonomy',
                        'BaseAi',
                        'AiEval',
                        'BenchmarkMetadataCard',
@@ -520,6 +545,7 @@ class Taxonomy(Entity):
     related_mappings: Optional[list[Any]] = Field(default=[], description="""The property skos:relatedMatch is used to state an associative mapping link between two concepts.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:relatedMatch'} })
     narrow_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a narrower concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:narrowMatch'} })
     broad_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a broader concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:broadMatch'} })
+    isCategorizedAs: Optional[list[Any]] = Field(default=[], description="""A relationship where an entity has been deemed to be categorized""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'nexus:isCategorizedAs'} })
 
 
 class Concept(Entity):
@@ -537,6 +563,7 @@ class Concept(Entity):
                        'Entry',
                        'Policy',
                        'Rule',
+                       'RiskControlGroup',
                        'RiskGroup',
                        'Risk',
                        'RiskControl',
@@ -556,6 +583,7 @@ class Concept(Entity):
                        'Term',
                        'Principle',
                        'RiskTaxonomy',
+                       'RiskControlGroupTaxonomy',
                        'Action',
                        'BaseAi',
                        'LargeLanguageModelFamily',
@@ -595,6 +623,7 @@ class Concept(Entity):
     related_mappings: Optional[list[Any]] = Field(default=[], description="""The property skos:relatedMatch is used to state an associative mapping link between two concepts.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:relatedMatch'} })
     narrow_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a narrower concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:narrowMatch'} })
     broad_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a broader concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:broadMatch'} })
+    isCategorizedAs: Optional[list[Any]] = Field(default=[], description="""A relationship where an entity has been deemed to be categorized""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'nexus:isCategorizedAs'} })
 
 
 class Control(Entity):
@@ -612,6 +641,7 @@ class Control(Entity):
                        'Entry',
                        'Policy',
                        'Rule',
+                       'RiskControlGroup',
                        'RiskGroup',
                        'Risk',
                        'RiskControl',
@@ -653,6 +683,7 @@ class Control(Entity):
     related_mappings: Optional[list[Any]] = Field(default=[], description="""The property skos:relatedMatch is used to state an associative mapping link between two concepts.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:relatedMatch'} })
     narrow_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a narrower concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:narrowMatch'} })
     broad_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a broader concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:broadMatch'} })
+    isCategorizedAs: Optional[list[Any]] = Field(default=[], description="""A relationship where an entity has been deemed to be categorized""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'nexus:isCategorizedAs'} })
 
 
 class Group(Entity):
@@ -670,6 +701,7 @@ class Group(Entity):
                        'Entry',
                        'Policy',
                        'Rule',
+                       'RiskControlGroup',
                        'RiskGroup',
                        'Risk',
                        'RiskControl',
@@ -689,6 +721,7 @@ class Group(Entity):
                        'Term',
                        'Principle',
                        'RiskTaxonomy',
+                       'RiskControlGroupTaxonomy',
                        'Action',
                        'BaseAi',
                        'LargeLanguageModelFamily',
@@ -697,7 +730,7 @@ class Group(Entity):
                        'Adapter',
                        'LLMIntrinsic'],
          'slot_uri': 'airo:hasDocumentation'} })
-    hasPart: Optional[list[str]] = Field(default=[], description="""A relationship where an entity has another entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Group', 'RiskGroup', 'CapabilityGroup'],
+    hasPart: Optional[list[str]] = Field(default=[], description="""A relationship where an entity has another entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Group', 'RiskControlGroup', 'RiskGroup', 'CapabilityGroup'],
          'slot_uri': 'skos:member'} })
     belongsToDomain: Optional[Any] = Field(default=None, description="""A relationship where a group belongs to a domain""", json_schema_extra = { "linkml_meta": {'domain_of': ['Group', 'CapabilityGroup'], 'slot_uri': 'schema:isPartOf'} })
     type: Literal["Group"] = Field(default="Group", json_schema_extra = { "linkml_meta": {'designates_type': True,
@@ -721,6 +754,8 @@ class Group(Entity):
                        'ControlActivityRecommendation',
                        'Requirement'],
          'ifabsent': 'string(Group)'} })
+    narrower: Optional[list[str]] = Field(default=[], json_schema_extra = { "linkml_meta": {'domain_of': ['Group'], 'slot_uri': 'skos:narrower'} })
+    broader: Optional[list[str]] = Field(default=[], json_schema_extra = { "linkml_meta": {'domain_of': ['Group'], 'slot_uri': 'skos:narrower'} })
     id: str = Field(default=..., description="""A unique identifier to this instance of the model element. Example identifiers include UUID, URI, URN, etc.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'schema:identifier'} })
     name: Optional[str] = Field(default=None, description="""A text name of this instance.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity', 'BenchmarkMetadataCard'], 'slot_uri': 'schema:name'} })
     description: Optional[str] = Field(default=None, description="""The description of an entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'schema:description'} })
@@ -732,6 +767,7 @@ class Group(Entity):
     related_mappings: Optional[list[Any]] = Field(default=[], description="""The property skos:relatedMatch is used to state an associative mapping link between two concepts.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:relatedMatch'} })
     narrow_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a narrower concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:narrowMatch'} })
     broad_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a broader concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:broadMatch'} })
+    isCategorizedAs: Optional[list[Any]] = Field(default=[], description="""A relationship where an entity has been deemed to be categorized""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'nexus:isCategorizedAs'} })
 
 
 class Entry(Entity):
@@ -748,6 +784,7 @@ class Entry(Entity):
                        'Entry',
                        'Policy',
                        'Rule',
+                       'RiskControlGroup',
                        'RiskGroup',
                        'Risk',
                        'RiskControl',
@@ -769,6 +806,7 @@ class Entry(Entity):
                        'Term',
                        'Principle',
                        'RiskTaxonomy',
+                       'RiskControlGroupTaxonomy',
                        'Action',
                        'BaseAi',
                        'LargeLanguageModelFamily',
@@ -787,11 +825,10 @@ class Entry(Entity):
     requiresCapability: Optional[list[str]] = Field(default=[], description="""Indicates that this entry requires a specific capability""", json_schema_extra = { "linkml_meta": {'domain': 'Any',
          'domain_of': ['Entry', 'LargeLanguageModel', 'AiTask', 'Adapter'],
          'inverse': 'requiredByTask'} })
-    implementedByAdapter: Optional[list[str]] = Field(default=[], description="""Indicates that this capability is implemented by a specific adapter. This relationship distinguishes the abstract capability (what can be done) from the technical implementation mechanism (how it is added/extended via adapters).
-""", json_schema_extra = { "linkml_meta": {'domain': 'Any',
+    implementedByAdapter: Optional[list[str]] = Field(default=[], description="""Indicates that this capability is implemented by a specific adapter. This relationship distinguishes the abstract capability (what can be done) from the technical implementation mechanism (how it is added/extended via adapters).""", json_schema_extra = { "linkml_meta": {'domain': 'Any',
          'domain_of': ['Entry', 'Capability'],
          'inverse': 'implementsCapability'} })
-    type: Literal["Entry"] = Field(default="Entry", description="""The entry type""", json_schema_extra = { "linkml_meta": {'designates_type': True,
+    type: Literal["Entry"] = Field(default="Entry", description="""The entry type.""", json_schema_extra = { "linkml_meta": {'designates_type': True,
          'domain_of': ['Vocabulary',
                        'Taxonomy',
                        'Concept',
@@ -822,6 +859,7 @@ class Entry(Entity):
     related_mappings: Optional[list[Any]] = Field(default=[], description="""The property skos:relatedMatch is used to state an associative mapping link between two concepts.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:relatedMatch'} })
     narrow_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a narrower concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:narrowMatch'} })
     broad_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a broader concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:broadMatch'} })
+    isCategorizedAs: Optional[list[Any]] = Field(default=[], description="""A relationship where an entity has been deemed to be categorized""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'nexus:isCategorizedAs'} })
 
 
 class Term(Entry):
@@ -841,6 +879,7 @@ class Term(Entry):
                        'Term',
                        'Principle',
                        'RiskTaxonomy',
+                       'RiskControlGroupTaxonomy',
                        'Action',
                        'BaseAi',
                        'LargeLanguageModelFamily',
@@ -867,6 +906,7 @@ class Term(Entry):
                        'Entry',
                        'Policy',
                        'Rule',
+                       'RiskControlGroup',
                        'RiskGroup',
                        'Risk',
                        'RiskControl',
@@ -887,11 +927,10 @@ class Term(Entry):
     requiresCapability: Optional[list[str]] = Field(default=[], description="""Indicates that this entry requires a specific capability""", json_schema_extra = { "linkml_meta": {'domain': 'Any',
          'domain_of': ['Entry', 'LargeLanguageModel', 'AiTask', 'Adapter'],
          'inverse': 'requiredByTask'} })
-    implementedByAdapter: Optional[list[str]] = Field(default=[], description="""Indicates that this capability is implemented by a specific adapter. This relationship distinguishes the abstract capability (what can be done) from the technical implementation mechanism (how it is added/extended via adapters).
-""", json_schema_extra = { "linkml_meta": {'domain': 'Any',
+    implementedByAdapter: Optional[list[str]] = Field(default=[], description="""Indicates that this capability is implemented by a specific adapter. This relationship distinguishes the abstract capability (what can be done) from the technical implementation mechanism (how it is added/extended via adapters).""", json_schema_extra = { "linkml_meta": {'domain': 'Any',
          'domain_of': ['Entry', 'Capability'],
          'inverse': 'implementsCapability'} })
-    type: Literal["Term"] = Field(default="Term", description="""The entry type""", json_schema_extra = { "linkml_meta": {'designates_type': True,
+    type: Literal["Term"] = Field(default="Term", description="""The entry type.""", json_schema_extra = { "linkml_meta": {'designates_type': True,
          'domain_of': ['Vocabulary',
                        'Taxonomy',
                        'Concept',
@@ -922,6 +961,7 @@ class Term(Entry):
     related_mappings: Optional[list[Any]] = Field(default=[], description="""The property skos:relatedMatch is used to state an associative mapping link between two concepts.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:relatedMatch'} })
     narrow_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a narrower concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:narrowMatch'} })
     broad_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a broader concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:broadMatch'} })
+    isCategorizedAs: Optional[list[Any]] = Field(default=[], description="""A relationship where an entity has been deemed to be categorized""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'nexus:isCategorizedAs'} })
 
 
 class Principle(Entry):
@@ -940,6 +980,7 @@ class Principle(Entry):
                        'Term',
                        'Principle',
                        'RiskTaxonomy',
+                       'RiskControlGroupTaxonomy',
                        'Action',
                        'BaseAi',
                        'LargeLanguageModelFamily',
@@ -954,6 +995,7 @@ class Principle(Entry):
                        'Entry',
                        'Policy',
                        'Rule',
+                       'RiskControlGroup',
                        'RiskGroup',
                        'Risk',
                        'RiskControl',
@@ -976,11 +1018,10 @@ class Principle(Entry):
     requiresCapability: Optional[list[str]] = Field(default=[], description="""Indicates that this entry requires a specific capability""", json_schema_extra = { "linkml_meta": {'domain': 'Any',
          'domain_of': ['Entry', 'LargeLanguageModel', 'AiTask', 'Adapter'],
          'inverse': 'requiredByTask'} })
-    implementedByAdapter: Optional[list[str]] = Field(default=[], description="""Indicates that this capability is implemented by a specific adapter. This relationship distinguishes the abstract capability (what can be done) from the technical implementation mechanism (how it is added/extended via adapters).
-""", json_schema_extra = { "linkml_meta": {'domain': 'Any',
+    implementedByAdapter: Optional[list[str]] = Field(default=[], description="""Indicates that this capability is implemented by a specific adapter. This relationship distinguishes the abstract capability (what can be done) from the technical implementation mechanism (how it is added/extended via adapters).""", json_schema_extra = { "linkml_meta": {'domain': 'Any',
          'domain_of': ['Entry', 'Capability'],
          'inverse': 'implementsCapability'} })
-    type: Literal["Principle"] = Field(default="Principle", description="""The entry type""", json_schema_extra = { "linkml_meta": {'designates_type': True,
+    type: Literal["Principle"] = Field(default="Principle", description="""The entry type.""", json_schema_extra = { "linkml_meta": {'designates_type': True,
          'domain_of': ['Vocabulary',
                        'Taxonomy',
                        'Concept',
@@ -1011,6 +1052,7 @@ class Principle(Entry):
     related_mappings: Optional[list[Any]] = Field(default=[], description="""The property skos:relatedMatch is used to state an associative mapping link between two concepts.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:relatedMatch'} })
     narrow_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a narrower concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:narrowMatch'} })
     broad_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a broader concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:broadMatch'} })
+    isCategorizedAs: Optional[list[Any]] = Field(default=[], description="""A relationship where an entity has been deemed to be categorized""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'nexus:isCategorizedAs'} })
 
 
 class Policy(Entity):
@@ -1027,6 +1069,7 @@ class Policy(Entity):
                        'Entry',
                        'Policy',
                        'Rule',
+                       'RiskControlGroup',
                        'RiskGroup',
                        'Risk',
                        'RiskControl',
@@ -1068,6 +1111,7 @@ class Policy(Entity):
     related_mappings: Optional[list[Any]] = Field(default=[], description="""The property skos:relatedMatch is used to state an associative mapping link between two concepts.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:relatedMatch'} })
     narrow_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a narrower concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:narrowMatch'} })
     broad_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a broader concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:broadMatch'} })
+    isCategorizedAs: Optional[list[Any]] = Field(default=[], description="""A relationship where an entity has been deemed to be categorized""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'nexus:isCategorizedAs'} })
 
 
 class LLMQuestionPolicy(Policy):
@@ -1097,6 +1141,7 @@ class LLMQuestionPolicy(Policy):
                        'Entry',
                        'Policy',
                        'Rule',
+                       'RiskControlGroup',
                        'RiskGroup',
                        'Risk',
                        'RiskControl',
@@ -1138,6 +1183,7 @@ class LLMQuestionPolicy(Policy):
     related_mappings: Optional[list[Any]] = Field(default=[], description="""The property skos:relatedMatch is used to state an associative mapping link between two concepts.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:relatedMatch'} })
     narrow_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a narrower concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:narrowMatch'} })
     broad_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a broader concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:broadMatch'} })
+    isCategorizedAs: Optional[list[Any]] = Field(default=[], description="""A relationship where an entity has been deemed to be categorized""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'nexus:isCategorizedAs'} })
 
 
 class Rule(Entity):
@@ -1154,6 +1200,7 @@ class Rule(Entity):
                        'Entry',
                        'Policy',
                        'Rule',
+                       'RiskControlGroup',
                        'RiskGroup',
                        'Risk',
                        'RiskControl',
@@ -1197,6 +1244,7 @@ class Rule(Entity):
     related_mappings: Optional[list[Any]] = Field(default=[], description="""The property skos:relatedMatch is used to state an associative mapping link between two concepts.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:relatedMatch'} })
     narrow_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a narrower concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:narrowMatch'} })
     broad_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a broader concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:broadMatch'} })
+    isCategorizedAs: Optional[list[Any]] = Field(default=[], description="""A relationship where an entity has been deemed to be categorized""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'nexus:isCategorizedAs'} })
 
 
 class Permission(Rule):
@@ -1233,6 +1281,7 @@ class Permission(Rule):
                        'Entry',
                        'Policy',
                        'Rule',
+                       'RiskControlGroup',
                        'RiskGroup',
                        'Risk',
                        'RiskControl',
@@ -1256,6 +1305,7 @@ class Permission(Rule):
     related_mappings: Optional[list[Any]] = Field(default=[], description="""The property skos:relatedMatch is used to state an associative mapping link between two concepts.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:relatedMatch'} })
     narrow_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a narrower concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:narrowMatch'} })
     broad_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a broader concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:broadMatch'} })
+    isCategorizedAs: Optional[list[Any]] = Field(default=[], description="""A relationship where an entity has been deemed to be categorized""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'nexus:isCategorizedAs'} })
 
 
 class Prohibition(Rule):
@@ -1292,6 +1342,7 @@ class Prohibition(Rule):
                        'Entry',
                        'Policy',
                        'Rule',
+                       'RiskControlGroup',
                        'RiskGroup',
                        'Risk',
                        'RiskControl',
@@ -1315,6 +1366,7 @@ class Prohibition(Rule):
     related_mappings: Optional[list[Any]] = Field(default=[], description="""The property skos:relatedMatch is used to state an associative mapping link between two concepts.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:relatedMatch'} })
     narrow_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a narrower concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:narrowMatch'} })
     broad_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a broader concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:broadMatch'} })
+    isCategorizedAs: Optional[list[Any]] = Field(default=[], description="""A relationship where an entity has been deemed to be categorized""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'nexus:isCategorizedAs'} })
 
 
 class Obligation(Rule):
@@ -1351,6 +1403,7 @@ class Obligation(Rule):
                        'Entry',
                        'Policy',
                        'Rule',
+                       'RiskControlGroup',
                        'RiskGroup',
                        'Risk',
                        'RiskControl',
@@ -1374,6 +1427,7 @@ class Obligation(Rule):
     related_mappings: Optional[list[Any]] = Field(default=[], description="""The property skos:relatedMatch is used to state an associative mapping link between two concepts.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:relatedMatch'} })
     narrow_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a narrower concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:narrowMatch'} })
     broad_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a broader concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:broadMatch'} })
+    isCategorizedAs: Optional[list[Any]] = Field(default=[], description="""A relationship where an entity has been deemed to be categorized""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'nexus:isCategorizedAs'} })
 
 
 class Recommendation(Rule):
@@ -1410,6 +1464,7 @@ class Recommendation(Rule):
                        'Entry',
                        'Policy',
                        'Rule',
+                       'RiskControlGroup',
                        'RiskGroup',
                        'Risk',
                        'RiskControl',
@@ -1433,6 +1488,7 @@ class Recommendation(Rule):
     related_mappings: Optional[list[Any]] = Field(default=[], description="""The property skos:relatedMatch is used to state an associative mapping link between two concepts.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:relatedMatch'} })
     narrow_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a narrower concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:narrowMatch'} })
     broad_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a broader concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:broadMatch'} })
+    isCategorizedAs: Optional[list[Any]] = Field(default=[], description="""A relationship where an entity has been deemed to be categorized""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'nexus:isCategorizedAs'} })
 
 
 class Certification(Entry):
@@ -1469,6 +1525,7 @@ class Certification(Entry):
                        'Entry',
                        'Policy',
                        'Rule',
+                       'RiskControlGroup',
                        'RiskGroup',
                        'Risk',
                        'RiskControl',
@@ -1490,6 +1547,7 @@ class Certification(Entry):
                        'Term',
                        'Principle',
                        'RiskTaxonomy',
+                       'RiskControlGroupTaxonomy',
                        'Action',
                        'BaseAi',
                        'LargeLanguageModelFamily',
@@ -1508,8 +1566,7 @@ class Certification(Entry):
     requiresCapability: Optional[list[str]] = Field(default=[], description="""Indicates that this entry requires a specific capability""", json_schema_extra = { "linkml_meta": {'domain': 'Any',
          'domain_of': ['Entry', 'LargeLanguageModel', 'AiTask', 'Adapter'],
          'inverse': 'requiredByTask'} })
-    implementedByAdapter: Optional[list[str]] = Field(default=[], description="""Indicates that this capability is implemented by a specific adapter. This relationship distinguishes the abstract capability (what can be done) from the technical implementation mechanism (how it is added/extended via adapters).
-""", json_schema_extra = { "linkml_meta": {'domain': 'Any',
+    implementedByAdapter: Optional[list[str]] = Field(default=[], description="""Indicates that this capability is implemented by a specific adapter. This relationship distinguishes the abstract capability (what can be done) from the technical implementation mechanism (how it is added/extended via adapters).""", json_schema_extra = { "linkml_meta": {'domain': 'Any',
          'domain_of': ['Entry', 'Capability'],
          'inverse': 'implementsCapability'} })
     id: str = Field(default=..., description="""A unique identifier to this instance of the model element. Example identifiers include UUID, URI, URN, etc.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'schema:identifier'} })
@@ -1523,6 +1580,7 @@ class Certification(Entry):
     related_mappings: Optional[list[Any]] = Field(default=[], description="""The property skos:relatedMatch is used to state an associative mapping link between two concepts.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:relatedMatch'} })
     narrow_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a narrower concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:narrowMatch'} })
     broad_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a broader concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:broadMatch'} })
+    isCategorizedAs: Optional[list[Any]] = Field(default=[], description="""A relationship where an entity has been deemed to be categorized""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'nexus:isCategorizedAs'} })
 
 
 class RiskTaxonomy(Taxonomy):
@@ -1531,7 +1589,11 @@ class RiskTaxonomy(Taxonomy):
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://ibm.github.io/ai-atlas-nexus/ontology/ai_risk'})
 
-    version: Optional[str] = Field(default=None, description="""The version of the entity embodied by a specified resource.""", json_schema_extra = { "linkml_meta": {'domain_of': ['License', 'Vocabulary', 'Taxonomy', 'RiskTaxonomy'],
+    version: Optional[str] = Field(default=None, description="""The version of the entity embodied by a specified resource.""", json_schema_extra = { "linkml_meta": {'domain_of': ['License',
+                       'Vocabulary',
+                       'Taxonomy',
+                       'RiskTaxonomy',
+                       'RiskControlGroupTaxonomy'],
          'slot_uri': 'schema:version'} })
     hasDocumentation: Optional[list[str]] = Field(default=[], description="""Indicates documentation associated with an entity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Dataset',
                        'Vocabulary',
@@ -1542,6 +1604,7 @@ class RiskTaxonomy(Taxonomy):
                        'Term',
                        'Principle',
                        'RiskTaxonomy',
+                       'RiskControlGroupTaxonomy',
                        'Action',
                        'BaseAi',
                        'LargeLanguageModelFamily',
@@ -1555,6 +1618,7 @@ class RiskTaxonomy(Taxonomy):
                        'Vocabulary',
                        'Taxonomy',
                        'RiskTaxonomy',
+                       'RiskControlGroupTaxonomy',
                        'BaseAi',
                        'AiEval',
                        'BenchmarkMetadataCard',
@@ -1591,6 +1655,82 @@ class RiskTaxonomy(Taxonomy):
     related_mappings: Optional[list[Any]] = Field(default=[], description="""The property skos:relatedMatch is used to state an associative mapping link between two concepts.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:relatedMatch'} })
     narrow_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a narrower concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:narrowMatch'} })
     broad_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a broader concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:broadMatch'} })
+    isCategorizedAs: Optional[list[Any]] = Field(default=[], description="""A relationship where an entity has been deemed to be categorized""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'nexus:isCategorizedAs'} })
+
+
+class RiskControlGroupTaxonomy(Taxonomy):
+    """
+    A taxonomy of AI system related risk controls groups
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://ibm.github.io/ai-atlas-nexus/ontology/ai_risk'})
+
+    version: Optional[str] = Field(default=None, description="""The version of the entity embodied by a specified resource.""", json_schema_extra = { "linkml_meta": {'domain_of': ['License',
+                       'Vocabulary',
+                       'Taxonomy',
+                       'RiskTaxonomy',
+                       'RiskControlGroupTaxonomy'],
+         'slot_uri': 'schema:version'} })
+    hasDocumentation: Optional[list[str]] = Field(default=[], description="""Indicates documentation associated with an entity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Dataset',
+                       'Vocabulary',
+                       'Taxonomy',
+                       'Concept',
+                       'Group',
+                       'Entry',
+                       'Term',
+                       'Principle',
+                       'RiskTaxonomy',
+                       'RiskControlGroupTaxonomy',
+                       'Action',
+                       'BaseAi',
+                       'LargeLanguageModelFamily',
+                       'AiEval',
+                       'BenchmarkMetadataCard',
+                       'Adapter',
+                       'LLMIntrinsic'],
+         'slot_uri': 'airo:hasDocumentation'} })
+    hasLicense: Optional[str] = Field(default=None, description="""Indicates licenses associated with a resource""", json_schema_extra = { "linkml_meta": {'domain_of': ['Dataset',
+                       'Documentation',
+                       'Vocabulary',
+                       'Taxonomy',
+                       'RiskTaxonomy',
+                       'RiskControlGroupTaxonomy',
+                       'BaseAi',
+                       'AiEval',
+                       'BenchmarkMetadataCard',
+                       'Adapter'],
+         'slot_uri': 'airo:hasLicense'} })
+    type: Literal["RiskControlGroupTaxonomy"] = Field(default="RiskControlGroupTaxonomy", json_schema_extra = { "linkml_meta": {'designates_type': True,
+         'domain_of': ['Vocabulary',
+                       'Taxonomy',
+                       'Concept',
+                       'Control',
+                       'Group',
+                       'Entry',
+                       'Policy',
+                       'Rule',
+                       'Permission',
+                       'Prohibition',
+                       'Obligation',
+                       'Recommendation',
+                       'Certification',
+                       'ControlActivity',
+                       'ControlActivityPermission',
+                       'ControlActivityProhibition',
+                       'ControlActivityObligation',
+                       'ControlActivityRecommendation',
+                       'Requirement']} })
+    id: str = Field(default=..., description="""A unique identifier to this instance of the model element. Example identifiers include UUID, URI, URN, etc.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'schema:identifier'} })
+    name: Optional[str] = Field(default=None, description="""A text name of this instance.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity', 'BenchmarkMetadataCard'], 'slot_uri': 'schema:name'} })
+    description: Optional[str] = Field(default=None, description="""The description of an entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'schema:description'} })
+    url: Optional[str] = Field(default=None, description="""An optional URL associated with this instance.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'schema:url'} })
+    dateCreated: Optional[date] = Field(default=None, description="""The date on which the entity was created.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'schema:dateCreated'} })
+    dateModified: Optional[date] = Field(default=None, description="""The date on which the entity was most recently modified.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'schema:dateModified'} })
+    exact_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to link two concepts, indicating a high degree of confidence that the concepts can be used interchangeably across a wide range of information retrieval applications""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:exactMatch'} })
+    close_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to link two concepts that are sufficiently similar that they can be used interchangeably in some information retrieval applications.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:closeMatch'} })
+    related_mappings: Optional[list[Any]] = Field(default=[], description="""The property skos:relatedMatch is used to state an associative mapping link between two concepts.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:relatedMatch'} })
+    narrow_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a narrower concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:narrowMatch'} })
+    broad_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a broader concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:broadMatch'} })
+    isCategorizedAs: Optional[list[Any]] = Field(default=[], description="""A relationship where an entity has been deemed to be categorized""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'nexus:isCategorizedAs'} })
 
 
 class RiskConcept(Concept):
@@ -1610,6 +1750,7 @@ class RiskConcept(Concept):
                        'Entry',
                        'Policy',
                        'Rule',
+                       'RiskControlGroup',
                        'RiskGroup',
                        'Risk',
                        'RiskControl',
@@ -1629,6 +1770,7 @@ class RiskConcept(Concept):
                        'Term',
                        'Principle',
                        'RiskTaxonomy',
+                       'RiskControlGroupTaxonomy',
                        'Action',
                        'BaseAi',
                        'LargeLanguageModelFamily',
@@ -1668,6 +1810,97 @@ class RiskConcept(Concept):
     related_mappings: Optional[list[Any]] = Field(default=[], description="""The property skos:relatedMatch is used to state an associative mapping link between two concepts.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:relatedMatch'} })
     narrow_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a narrower concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:narrowMatch'} })
     broad_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a broader concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:broadMatch'} })
+    isCategorizedAs: Optional[list[Any]] = Field(default=[], description="""A relationship where an entity has been deemed to be categorized""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'nexus:isCategorizedAs'} })
+
+
+class RiskControlGroup(RiskConcept, Group):
+    """
+    A group of AI system related risk controls.
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://ibm.github.io/ai-atlas-nexus/ontology/ai_risk',
+         'mixins': ['RiskConcept'],
+         'slot_usage': {'hasPart': {'description': 'A relationship where a '
+                                                   'riskcontrolgroup has a risk '
+                                                   'control',
+                                    'name': 'hasPart',
+                                    'range': 'RiskControl'}}})
+
+    isDefinedByTaxonomy: Optional[str] = Field(default=None, description="""A relationship where a concept or a concept group is defined by a taxonomy""", json_schema_extra = { "linkml_meta": {'domain_of': ['Concept',
+                       'Control',
+                       'Group',
+                       'Entry',
+                       'Policy',
+                       'Rule',
+                       'RiskControlGroup',
+                       'RiskGroup',
+                       'Risk',
+                       'RiskControl',
+                       'Action',
+                       'RiskIncident',
+                       'Stakeholder',
+                       'StakeholderGroup',
+                       'CapabilityGroup',
+                       'Requirement'],
+         'slot_uri': 'schema:isPartOf'} })
+    hasPart: Optional[list[str]] = Field(default=[], description="""A relationship where a riskcontrolgroup has a risk control""", json_schema_extra = { "linkml_meta": {'domain_of': ['Group', 'RiskControlGroup', 'RiskGroup', 'CapabilityGroup'],
+         'slot_uri': 'skos:member'} })
+    isDetectedBy: Optional[list[str]] = Field(default=[], description="""A relationship where a risk, risk source, consequence, or impact is detected by a risk control.""", json_schema_extra = { "linkml_meta": {'domain': 'RiskConcept',
+         'domain_of': ['RiskConcept'],
+         'inverse': 'detectsRiskConcept'} })
+    hasDocumentation: Optional[list[str]] = Field(default=[], description="""Indicates documentation associated with an entity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Dataset',
+                       'Vocabulary',
+                       'Taxonomy',
+                       'Concept',
+                       'Group',
+                       'Entry',
+                       'Term',
+                       'Principle',
+                       'RiskTaxonomy',
+                       'RiskControlGroupTaxonomy',
+                       'Action',
+                       'BaseAi',
+                       'LargeLanguageModelFamily',
+                       'AiEval',
+                       'BenchmarkMetadataCard',
+                       'Adapter',
+                       'LLMIntrinsic'],
+         'slot_uri': 'airo:hasDocumentation'} })
+    belongsToDomain: Optional[Any] = Field(default=None, description="""A relationship where a group belongs to a domain""", json_schema_extra = { "linkml_meta": {'domain_of': ['Group', 'CapabilityGroup'], 'slot_uri': 'schema:isPartOf'} })
+    type: Literal["RiskControlGroup"] = Field(default="RiskControlGroup", json_schema_extra = { "linkml_meta": {'designates_type': True,
+         'domain_of': ['Vocabulary',
+                       'Taxonomy',
+                       'Concept',
+                       'Control',
+                       'Group',
+                       'Entry',
+                       'Policy',
+                       'Rule',
+                       'Permission',
+                       'Prohibition',
+                       'Obligation',
+                       'Recommendation',
+                       'Certification',
+                       'ControlActivity',
+                       'ControlActivityPermission',
+                       'ControlActivityProhibition',
+                       'ControlActivityObligation',
+                       'ControlActivityRecommendation',
+                       'Requirement'],
+         'ifabsent': 'string(Group)'} })
+    narrower: Optional[list[str]] = Field(default=[], json_schema_extra = { "linkml_meta": {'domain_of': ['Group'], 'slot_uri': 'skos:narrower'} })
+    broader: Optional[list[str]] = Field(default=[], json_schema_extra = { "linkml_meta": {'domain_of': ['Group'], 'slot_uri': 'skos:narrower'} })
+    id: str = Field(default=..., description="""A unique identifier to this instance of the model element. Example identifiers include UUID, URI, URN, etc.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'schema:identifier'} })
+    name: Optional[str] = Field(default=None, description="""A text name of this instance.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity', 'BenchmarkMetadataCard'], 'slot_uri': 'schema:name'} })
+    description: Optional[str] = Field(default=None, description="""The description of an entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'schema:description'} })
+    url: Optional[str] = Field(default=None, description="""An optional URL associated with this instance.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'schema:url'} })
+    dateCreated: Optional[date] = Field(default=None, description="""The date on which the entity was created.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'schema:dateCreated'} })
+    dateModified: Optional[date] = Field(default=None, description="""The date on which the entity was most recently modified.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'schema:dateModified'} })
+    exact_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to link two concepts, indicating a high degree of confidence that the concepts can be used interchangeably across a wide range of information retrieval applications""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:exactMatch'} })
+    close_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to link two concepts that are sufficiently similar that they can be used interchangeably in some information retrieval applications.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:closeMatch'} })
+    related_mappings: Optional[list[Any]] = Field(default=[], description="""The property skos:relatedMatch is used to state an associative mapping link between two concepts.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:relatedMatch'} })
+    narrow_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a narrower concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:narrowMatch'} })
+    broad_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a broader concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:broadMatch'} })
+    isCategorizedAs: Optional[list[Any]] = Field(default=[], description="""A relationship where an entity has been deemed to be categorized""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'nexus:isCategorizedAs'} })
 
 
 class RiskGroup(RiskConcept, Group):
@@ -1687,6 +1920,7 @@ class RiskGroup(RiskConcept, Group):
                        'Entry',
                        'Policy',
                        'Rule',
+                       'RiskControlGroup',
                        'RiskGroup',
                        'Risk',
                        'RiskControl',
@@ -1697,7 +1931,7 @@ class RiskGroup(RiskConcept, Group):
                        'CapabilityGroup',
                        'Requirement'],
          'slot_uri': 'schema:isPartOf'} })
-    hasPart: Optional[list[str]] = Field(default=[], description="""A relationship where a riskgroup has a risk""", json_schema_extra = { "linkml_meta": {'domain_of': ['Group', 'RiskGroup', 'CapabilityGroup'],
+    hasPart: Optional[list[str]] = Field(default=[], description="""A relationship where a riskgroup has a risk""", json_schema_extra = { "linkml_meta": {'domain_of': ['Group', 'RiskControlGroup', 'RiskGroup', 'CapabilityGroup'],
          'slot_uri': 'skos:member'} })
     isDetectedBy: Optional[list[str]] = Field(default=[], description="""A relationship where a risk, risk source, consequence, or impact is detected by a risk control.""", json_schema_extra = { "linkml_meta": {'domain': 'RiskConcept',
          'domain_of': ['RiskConcept'],
@@ -1711,6 +1945,7 @@ class RiskGroup(RiskConcept, Group):
                        'Term',
                        'Principle',
                        'RiskTaxonomy',
+                       'RiskControlGroupTaxonomy',
                        'Action',
                        'BaseAi',
                        'LargeLanguageModelFamily',
@@ -1741,6 +1976,8 @@ class RiskGroup(RiskConcept, Group):
                        'ControlActivityRecommendation',
                        'Requirement'],
          'ifabsent': 'string(Group)'} })
+    narrower: Optional[list[str]] = Field(default=[], json_schema_extra = { "linkml_meta": {'domain_of': ['Group'], 'slot_uri': 'skos:narrower'} })
+    broader: Optional[list[str]] = Field(default=[], json_schema_extra = { "linkml_meta": {'domain_of': ['Group'], 'slot_uri': 'skos:narrower'} })
     id: str = Field(default=..., description="""A unique identifier to this instance of the model element. Example identifiers include UUID, URI, URN, etc.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'schema:identifier'} })
     name: Optional[str] = Field(default=None, description="""A text name of this instance.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity', 'BenchmarkMetadataCard'], 'slot_uri': 'schema:name'} })
     description: Optional[str] = Field(default=None, description="""The description of an entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'schema:description'} })
@@ -1752,6 +1989,7 @@ class RiskGroup(RiskConcept, Group):
     related_mappings: Optional[list[Any]] = Field(default=[], description="""The property skos:relatedMatch is used to state an associative mapping link between two concepts.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:relatedMatch'} })
     narrow_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a narrower concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:narrowMatch'} })
     broad_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a broader concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:broadMatch'} })
+    isCategorizedAs: Optional[list[Any]] = Field(default=[], description="""A relationship where an entity has been deemed to be categorized""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'nexus:isCategorizedAs'} })
 
 
 class Risk(RiskConcept, Entry):
@@ -1773,6 +2011,7 @@ class Risk(RiskConcept, Entry):
                        'Entry',
                        'Policy',
                        'Rule',
+                       'RiskControlGroup',
                        'RiskGroup',
                        'Risk',
                        'RiskControl',
@@ -1812,6 +2051,7 @@ class Risk(RiskConcept, Entry):
                        'Term',
                        'Principle',
                        'RiskTaxonomy',
+                       'RiskControlGroupTaxonomy',
                        'Action',
                        'BaseAi',
                        'LargeLanguageModelFamily',
@@ -1824,11 +2064,10 @@ class Risk(RiskConcept, Entry):
     requiresCapability: Optional[list[str]] = Field(default=[], description="""Indicates that this entry requires a specific capability""", json_schema_extra = { "linkml_meta": {'domain': 'Any',
          'domain_of': ['Entry', 'LargeLanguageModel', 'AiTask', 'Adapter'],
          'inverse': 'requiredByTask'} })
-    implementedByAdapter: Optional[list[str]] = Field(default=[], description="""Indicates that this capability is implemented by a specific adapter. This relationship distinguishes the abstract capability (what can be done) from the technical implementation mechanism (how it is added/extended via adapters).
-""", json_schema_extra = { "linkml_meta": {'domain': 'Any',
+    implementedByAdapter: Optional[list[str]] = Field(default=[], description="""Indicates that this capability is implemented by a specific adapter. This relationship distinguishes the abstract capability (what can be done) from the technical implementation mechanism (how it is added/extended via adapters).""", json_schema_extra = { "linkml_meta": {'domain': 'Any',
          'domain_of': ['Entry', 'Capability'],
          'inverse': 'implementsCapability'} })
-    type: Literal["Risk"] = Field(default="Risk", description="""The entry type""", json_schema_extra = { "linkml_meta": {'designates_type': True,
+    type: Literal["Risk"] = Field(default="Risk", description="""The entry type.""", json_schema_extra = { "linkml_meta": {'designates_type': True,
          'domain_of': ['Vocabulary',
                        'Taxonomy',
                        'Concept',
@@ -1859,6 +2098,7 @@ class Risk(RiskConcept, Entry):
     related_mappings: Optional[list[Any]] = Field(default=[], description="""The property skos:relatedMatch is used to state an associative mapping link between two concepts.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:relatedMatch'} })
     narrow_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a narrower concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:narrowMatch'} })
     broad_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a broader concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:broadMatch'} })
+    isCategorizedAs: Optional[list[Any]] = Field(default=[], description="""A relationship where an entity has been deemed to be categorized""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'nexus:isCategorizedAs'} })
 
 
 class RiskControl(RiskConcept, Control):
@@ -1880,6 +2120,7 @@ class RiskControl(RiskConcept, Control):
                        'Entry',
                        'Policy',
                        'Rule',
+                       'RiskControlGroup',
                        'RiskGroup',
                        'Risk',
                        'RiskControl',
@@ -1924,6 +2165,7 @@ class RiskControl(RiskConcept, Control):
     related_mappings: Optional[list[Any]] = Field(default=[], description="""The property skos:relatedMatch is used to state an associative mapping link between two concepts.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:relatedMatch'} })
     narrow_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a narrower concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:narrowMatch'} })
     broad_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a broader concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:broadMatch'} })
+    isCategorizedAs: Optional[list[Any]] = Field(default=[], description="""A relationship where an entity has been deemed to be categorized""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'nexus:isCategorizedAs'} })
     hasDocumentation: Optional[list[str]] = Field(default=[], description="""Indicates documentation associated with an entity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Dataset',
                        'Vocabulary',
                        'Taxonomy',
@@ -1933,6 +2175,7 @@ class RiskControl(RiskConcept, Control):
                        'Term',
                        'Principle',
                        'RiskTaxonomy',
+                       'RiskControlGroupTaxonomy',
                        'Action',
                        'BaseAi',
                        'LargeLanguageModelFamily',
@@ -1968,6 +2211,7 @@ class Action(RiskControl):
                        'Term',
                        'Principle',
                        'RiskTaxonomy',
+                       'RiskControlGroupTaxonomy',
                        'Action',
                        'BaseAi',
                        'LargeLanguageModelFamily',
@@ -1982,6 +2226,7 @@ class Action(RiskControl):
                        'Entry',
                        'Policy',
                        'Rule',
+                       'RiskControlGroup',
                        'RiskGroup',
                        'Risk',
                        'RiskControl',
@@ -2031,6 +2276,7 @@ class Action(RiskControl):
     related_mappings: Optional[list[Any]] = Field(default=[], description="""The property skos:relatedMatch is used to state an associative mapping link between two concepts.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:relatedMatch'} })
     narrow_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a narrower concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:narrowMatch'} })
     broad_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a broader concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:broadMatch'} })
+    isCategorizedAs: Optional[list[Any]] = Field(default=[], description="""A relationship where an entity has been deemed to be categorized""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'nexus:isCategorizedAs'} })
 
 
 class RiskIncident(RiskConcept, Entity):
@@ -2050,6 +2296,7 @@ class RiskIncident(RiskConcept, Entity):
                        'Entry',
                        'Policy',
                        'Rule',
+                       'RiskControlGroup',
                        'RiskGroup',
                        'Risk',
                        'RiskControl',
@@ -2087,6 +2334,7 @@ class RiskIncident(RiskConcept, Entity):
     related_mappings: Optional[list[Any]] = Field(default=[], description="""The property skos:relatedMatch is used to state an associative mapping link between two concepts.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:relatedMatch'} })
     narrow_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a narrower concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:narrowMatch'} })
     broad_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a broader concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:broadMatch'} })
+    isCategorizedAs: Optional[list[Any]] = Field(default=[], description="""A relationship where an entity has been deemed to be categorized""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'nexus:isCategorizedAs'} })
     hasDocumentation: Optional[list[str]] = Field(default=[], description="""Indicates documentation associated with an entity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Dataset',
                        'Vocabulary',
                        'Taxonomy',
@@ -2096,6 +2344,7 @@ class RiskIncident(RiskConcept, Entity):
                        'Term',
                        'Principle',
                        'RiskTaxonomy',
+                       'RiskControlGroupTaxonomy',
                        'Action',
                        'BaseAi',
                        'LargeLanguageModelFamily',
@@ -2145,12 +2394,14 @@ class Impact(RiskConcept, Entity):
     related_mappings: Optional[list[Any]] = Field(default=[], description="""The property skos:relatedMatch is used to state an associative mapping link between two concepts.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:relatedMatch'} })
     narrow_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a narrower concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:narrowMatch'} })
     broad_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a broader concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:broadMatch'} })
+    isCategorizedAs: Optional[list[Any]] = Field(default=[], description="""A relationship where an entity has been deemed to be categorized""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'nexus:isCategorizedAs'} })
     isDefinedByTaxonomy: Optional[str] = Field(default=None, description="""A relationship where a concept or a concept group is defined by a taxonomy""", json_schema_extra = { "linkml_meta": {'domain_of': ['Concept',
                        'Control',
                        'Group',
                        'Entry',
                        'Policy',
                        'Rule',
+                       'RiskControlGroup',
                        'RiskGroup',
                        'Risk',
                        'RiskControl',
@@ -2170,6 +2421,7 @@ class Impact(RiskConcept, Entity):
                        'Term',
                        'Principle',
                        'RiskTaxonomy',
+                       'RiskControlGroupTaxonomy',
                        'Action',
                        'BaseAi',
                        'LargeLanguageModelFamily',
@@ -2215,6 +2467,7 @@ class IncidentStatus(Entity):
     related_mappings: Optional[list[Any]] = Field(default=[], description="""The property skos:relatedMatch is used to state an associative mapping link between two concepts.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:relatedMatch'} })
     narrow_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a narrower concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:narrowMatch'} })
     broad_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a broader concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:broadMatch'} })
+    isCategorizedAs: Optional[list[Any]] = Field(default=[], description="""A relationship where an entity has been deemed to be categorized""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'nexus:isCategorizedAs'} })
 
 
 class IncidentConcludedclass(IncidentStatus):
@@ -2232,6 +2485,7 @@ class IncidentConcludedclass(IncidentStatus):
     related_mappings: Optional[list[Any]] = Field(default=[], description="""The property skos:relatedMatch is used to state an associative mapping link between two concepts.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:relatedMatch'} })
     narrow_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a narrower concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:narrowMatch'} })
     broad_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a broader concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:broadMatch'} })
+    isCategorizedAs: Optional[list[Any]] = Field(default=[], description="""A relationship where an entity has been deemed to be categorized""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'nexus:isCategorizedAs'} })
 
 
 class IncidentHaltedclass(IncidentStatus):
@@ -2249,6 +2503,7 @@ class IncidentHaltedclass(IncidentStatus):
     related_mappings: Optional[list[Any]] = Field(default=[], description="""The property skos:relatedMatch is used to state an associative mapping link between two concepts.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:relatedMatch'} })
     narrow_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a narrower concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:narrowMatch'} })
     broad_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a broader concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:broadMatch'} })
+    isCategorizedAs: Optional[list[Any]] = Field(default=[], description="""A relationship where an entity has been deemed to be categorized""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'nexus:isCategorizedAs'} })
 
 
 class IncidentMitigatedclass(IncidentStatus):
@@ -2266,6 +2521,7 @@ class IncidentMitigatedclass(IncidentStatus):
     related_mappings: Optional[list[Any]] = Field(default=[], description="""The property skos:relatedMatch is used to state an associative mapping link between two concepts.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:relatedMatch'} })
     narrow_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a narrower concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:narrowMatch'} })
     broad_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a broader concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:broadMatch'} })
+    isCategorizedAs: Optional[list[Any]] = Field(default=[], description="""A relationship where an entity has been deemed to be categorized""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'nexus:isCategorizedAs'} })
 
 
 class IncidentNearMissclass(IncidentStatus):
@@ -2283,6 +2539,7 @@ class IncidentNearMissclass(IncidentStatus):
     related_mappings: Optional[list[Any]] = Field(default=[], description="""The property skos:relatedMatch is used to state an associative mapping link between two concepts.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:relatedMatch'} })
     narrow_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a narrower concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:narrowMatch'} })
     broad_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a broader concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:broadMatch'} })
+    isCategorizedAs: Optional[list[Any]] = Field(default=[], description="""A relationship where an entity has been deemed to be categorized""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'nexus:isCategorizedAs'} })
 
 
 class IncidentOngoingclass(IncidentStatus):
@@ -2300,6 +2557,7 @@ class IncidentOngoingclass(IncidentStatus):
     related_mappings: Optional[list[Any]] = Field(default=[], description="""The property skos:relatedMatch is used to state an associative mapping link between two concepts.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:relatedMatch'} })
     narrow_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a narrower concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:narrowMatch'} })
     broad_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a broader concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:broadMatch'} })
+    isCategorizedAs: Optional[list[Any]] = Field(default=[], description="""A relationship where an entity has been deemed to be categorized""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'nexus:isCategorizedAs'} })
 
 
 class Severity(Entity):
@@ -2317,6 +2575,7 @@ class Severity(Entity):
     related_mappings: Optional[list[Any]] = Field(default=[], description="""The property skos:relatedMatch is used to state an associative mapping link between two concepts.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:relatedMatch'} })
     narrow_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a narrower concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:narrowMatch'} })
     broad_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a broader concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:broadMatch'} })
+    isCategorizedAs: Optional[list[Any]] = Field(default=[], description="""A relationship where an entity has been deemed to be categorized""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'nexus:isCategorizedAs'} })
 
 
 class Likelihood(Entity):
@@ -2334,6 +2593,7 @@ class Likelihood(Entity):
     related_mappings: Optional[list[Any]] = Field(default=[], description="""The property skos:relatedMatch is used to state an associative mapping link between two concepts.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:relatedMatch'} })
     narrow_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a narrower concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:narrowMatch'} })
     broad_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a broader concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:broadMatch'} })
+    isCategorizedAs: Optional[list[Any]] = Field(default=[], description="""A relationship where an entity has been deemed to be categorized""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'nexus:isCategorizedAs'} })
 
 
 class Consequence(Entity):
@@ -2351,6 +2611,7 @@ class Consequence(Entity):
     related_mappings: Optional[list[Any]] = Field(default=[], description="""The property skos:relatedMatch is used to state an associative mapping link between two concepts.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:relatedMatch'} })
     narrow_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a narrower concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:narrowMatch'} })
     broad_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a broader concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:broadMatch'} })
+    isCategorizedAs: Optional[list[Any]] = Field(default=[], description="""A relationship where an entity has been deemed to be categorized""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'nexus:isCategorizedAs'} })
 
 
 class BaseAi(Entity):
@@ -2371,6 +2632,7 @@ class BaseAi(Entity):
                        'Term',
                        'Principle',
                        'RiskTaxonomy',
+                       'RiskControlGroupTaxonomy',
                        'Action',
                        'BaseAi',
                        'LargeLanguageModelFamily',
@@ -2384,6 +2646,7 @@ class BaseAi(Entity):
                        'Vocabulary',
                        'Taxonomy',
                        'RiskTaxonomy',
+                       'RiskControlGroupTaxonomy',
                        'BaseAi',
                        'AiEval',
                        'BenchmarkMetadataCard',
@@ -2402,6 +2665,7 @@ class BaseAi(Entity):
     related_mappings: Optional[list[Any]] = Field(default=[], description="""The property skos:relatedMatch is used to state an associative mapping link between two concepts.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:relatedMatch'} })
     narrow_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a narrower concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:narrowMatch'} })
     broad_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a broader concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:broadMatch'} })
+    isCategorizedAs: Optional[list[Any]] = Field(default=[], description="""A relationship where an entity has been deemed to be categorized""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'nexus:isCategorizedAs'} })
 
 
 class AiSystem(BaseAi, Entry):
@@ -2466,6 +2730,7 @@ class AiSystem(BaseAi, Entry):
                        'Term',
                        'Principle',
                        'RiskTaxonomy',
+                       'RiskControlGroupTaxonomy',
                        'Action',
                        'BaseAi',
                        'LargeLanguageModelFamily',
@@ -2479,6 +2744,7 @@ class AiSystem(BaseAi, Entry):
                        'Vocabulary',
                        'Taxonomy',
                        'RiskTaxonomy',
+                       'RiskControlGroupTaxonomy',
                        'BaseAi',
                        'AiEval',
                        'BenchmarkMetadataCard',
@@ -2492,6 +2758,7 @@ class AiSystem(BaseAi, Entry):
                        'Entry',
                        'Policy',
                        'Rule',
+                       'RiskControlGroup',
                        'RiskGroup',
                        'Risk',
                        'RiskControl',
@@ -2514,11 +2781,10 @@ class AiSystem(BaseAi, Entry):
     requiresCapability: Optional[list[str]] = Field(default=[], description="""Indicates that this entry requires a specific capability""", json_schema_extra = { "linkml_meta": {'domain': 'Any',
          'domain_of': ['Entry', 'LargeLanguageModel', 'AiTask', 'Adapter'],
          'inverse': 'requiredByTask'} })
-    implementedByAdapter: Optional[list[str]] = Field(default=[], description="""Indicates that this capability is implemented by a specific adapter. This relationship distinguishes the abstract capability (what can be done) from the technical implementation mechanism (how it is added/extended via adapters).
-""", json_schema_extra = { "linkml_meta": {'domain': 'Any',
+    implementedByAdapter: Optional[list[str]] = Field(default=[], description="""Indicates that this capability is implemented by a specific adapter. This relationship distinguishes the abstract capability (what can be done) from the technical implementation mechanism (how it is added/extended via adapters).""", json_schema_extra = { "linkml_meta": {'domain': 'Any',
          'domain_of': ['Entry', 'Capability'],
          'inverse': 'implementsCapability'} })
-    type: Literal["AiSystem"] = Field(default="AiSystem", description="""The entry type""", json_schema_extra = { "linkml_meta": {'designates_type': True,
+    type: Literal["AiSystem"] = Field(default="AiSystem", description="""The entry type.""", json_schema_extra = { "linkml_meta": {'designates_type': True,
          'domain_of': ['Vocabulary',
                        'Taxonomy',
                        'Concept',
@@ -2549,6 +2815,7 @@ class AiSystem(BaseAi, Entry):
     related_mappings: Optional[list[Any]] = Field(default=[], description="""The property skos:relatedMatch is used to state an associative mapping link between two concepts.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:relatedMatch'} })
     narrow_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a narrower concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:narrowMatch'} })
     broad_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a broader concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:broadMatch'} })
+    isCategorizedAs: Optional[list[Any]] = Field(default=[], description="""A relationship where an entity has been deemed to be categorized""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'nexus:isCategorizedAs'} })
 
 
 class AiAgent(AiSystem):
@@ -2609,6 +2876,7 @@ class AiAgent(AiSystem):
                        'Term',
                        'Principle',
                        'RiskTaxonomy',
+                       'RiskControlGroupTaxonomy',
                        'Action',
                        'BaseAi',
                        'LargeLanguageModelFamily',
@@ -2622,6 +2890,7 @@ class AiAgent(AiSystem):
                        'Vocabulary',
                        'Taxonomy',
                        'RiskTaxonomy',
+                       'RiskControlGroupTaxonomy',
                        'BaseAi',
                        'AiEval',
                        'BenchmarkMetadataCard',
@@ -2635,6 +2904,7 @@ class AiAgent(AiSystem):
                        'Entry',
                        'Policy',
                        'Rule',
+                       'RiskControlGroup',
                        'RiskGroup',
                        'Risk',
                        'RiskControl',
@@ -2657,11 +2927,10 @@ class AiAgent(AiSystem):
     requiresCapability: Optional[list[str]] = Field(default=[], description="""Indicates that this entry requires a specific capability""", json_schema_extra = { "linkml_meta": {'domain': 'Any',
          'domain_of': ['Entry', 'LargeLanguageModel', 'AiTask', 'Adapter'],
          'inverse': 'requiredByTask'} })
-    implementedByAdapter: Optional[list[str]] = Field(default=[], description="""Indicates that this capability is implemented by a specific adapter. This relationship distinguishes the abstract capability (what can be done) from the technical implementation mechanism (how it is added/extended via adapters).
-""", json_schema_extra = { "linkml_meta": {'domain': 'Any',
+    implementedByAdapter: Optional[list[str]] = Field(default=[], description="""Indicates that this capability is implemented by a specific adapter. This relationship distinguishes the abstract capability (what can be done) from the technical implementation mechanism (how it is added/extended via adapters).""", json_schema_extra = { "linkml_meta": {'domain': 'Any',
          'domain_of': ['Entry', 'Capability'],
          'inverse': 'implementsCapability'} })
-    type: Literal["AiAgent"] = Field(default="AiAgent", description="""The entry type""", json_schema_extra = { "linkml_meta": {'designates_type': True,
+    type: Literal["AiAgent"] = Field(default="AiAgent", description="""The entry type.""", json_schema_extra = { "linkml_meta": {'designates_type': True,
          'domain_of': ['Vocabulary',
                        'Taxonomy',
                        'Concept',
@@ -2692,6 +2961,7 @@ class AiAgent(AiSystem):
     related_mappings: Optional[list[Any]] = Field(default=[], description="""The property skos:relatedMatch is used to state an associative mapping link between two concepts.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:relatedMatch'} })
     narrow_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a narrower concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:narrowMatch'} })
     broad_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a broader concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:broadMatch'} })
+    isCategorizedAs: Optional[list[Any]] = Field(default=[], description="""A relationship where an entity has been deemed to be categorized""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'nexus:isCategorizedAs'} })
 
 
 class LargeLanguageModelFamily(Entity):
@@ -2709,6 +2979,7 @@ class LargeLanguageModelFamily(Entity):
                        'Term',
                        'Principle',
                        'RiskTaxonomy',
+                       'RiskControlGroupTaxonomy',
                        'Action',
                        'BaseAi',
                        'LargeLanguageModelFamily',
@@ -2728,6 +2999,7 @@ class LargeLanguageModelFamily(Entity):
     related_mappings: Optional[list[Any]] = Field(default=[], description="""The property skos:relatedMatch is used to state an associative mapping link between two concepts.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:relatedMatch'} })
     narrow_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a narrower concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:narrowMatch'} })
     broad_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a broader concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:broadMatch'} })
+    isCategorizedAs: Optional[list[Any]] = Field(default=[], description="""A relationship where an entity has been deemed to be categorized""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'nexus:isCategorizedAs'} })
 
 
 class AiTask(Entry):
@@ -2746,6 +3018,7 @@ class AiTask(Entry):
                        'Entry',
                        'Policy',
                        'Rule',
+                       'RiskControlGroup',
                        'RiskGroup',
                        'Risk',
                        'RiskControl',
@@ -2767,6 +3040,7 @@ class AiTask(Entry):
                        'Term',
                        'Principle',
                        'RiskTaxonomy',
+                       'RiskControlGroupTaxonomy',
                        'Action',
                        'BaseAi',
                        'LargeLanguageModelFamily',
@@ -2782,11 +3056,10 @@ class AiTask(Entry):
                        'CapabilityGroup'],
          'slot_uri': 'schema:isPartOf'} })
     requiredByTask: Optional[list[str]] = Field(default=[], description="""Indicates that this entry is required to perform a specific AI task.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entry', 'Capability'], 'inverse': 'requiresCapability'} })
-    implementedByAdapter: Optional[list[str]] = Field(default=[], description="""Indicates that this capability is implemented by a specific adapter. This relationship distinguishes the abstract capability (what can be done) from the technical implementation mechanism (how it is added/extended via adapters).
-""", json_schema_extra = { "linkml_meta": {'domain': 'Any',
+    implementedByAdapter: Optional[list[str]] = Field(default=[], description="""Indicates that this capability is implemented by a specific adapter. This relationship distinguishes the abstract capability (what can be done) from the technical implementation mechanism (how it is added/extended via adapters).""", json_schema_extra = { "linkml_meta": {'domain': 'Any',
          'domain_of': ['Entry', 'Capability'],
          'inverse': 'implementsCapability'} })
-    type: Literal["AiTask"] = Field(default="AiTask", description="""The entry type""", json_schema_extra = { "linkml_meta": {'designates_type': True,
+    type: Literal["AiTask"] = Field(default="AiTask", description="""The entry type.""", json_schema_extra = { "linkml_meta": {'designates_type': True,
          'domain_of': ['Vocabulary',
                        'Taxonomy',
                        'Concept',
@@ -2817,6 +3090,7 @@ class AiTask(Entry):
     related_mappings: Optional[list[Any]] = Field(default=[], description="""The property skos:relatedMatch is used to state an associative mapping link between two concepts.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:relatedMatch'} })
     narrow_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a narrower concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:narrowMatch'} })
     broad_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a broader concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:broadMatch'} })
+    isCategorizedAs: Optional[list[Any]] = Field(default=[], description="""A relationship where an entity has been deemed to be categorized""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'nexus:isCategorizedAs'} })
 
 
 class AiLifecyclePhase(Entity):
@@ -2838,6 +3112,7 @@ class AiLifecyclePhase(Entity):
     related_mappings: Optional[list[Any]] = Field(default=[], description="""The property skos:relatedMatch is used to state an associative mapping link between two concepts.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:relatedMatch'} })
     narrow_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a narrower concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:narrowMatch'} })
     broad_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a broader concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:broadMatch'} })
+    isCategorizedAs: Optional[list[Any]] = Field(default=[], description="""A relationship where an entity has been deemed to be categorized""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'nexus:isCategorizedAs'} })
 
 
 class DataPreprocessing(AiLifecyclePhase):
@@ -2857,6 +3132,7 @@ class DataPreprocessing(AiLifecyclePhase):
     related_mappings: Optional[list[Any]] = Field(default=[], description="""The property skos:relatedMatch is used to state an associative mapping link between two concepts.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:relatedMatch'} })
     narrow_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a narrower concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:narrowMatch'} })
     broad_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a broader concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:broadMatch'} })
+    isCategorizedAs: Optional[list[Any]] = Field(default=[], description="""A relationship where an entity has been deemed to be categorized""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'nexus:isCategorizedAs'} })
 
 
 class AiModelValidation(AiLifecyclePhase):
@@ -2876,6 +3152,7 @@ class AiModelValidation(AiLifecyclePhase):
     related_mappings: Optional[list[Any]] = Field(default=[], description="""The property skos:relatedMatch is used to state an associative mapping link between two concepts.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:relatedMatch'} })
     narrow_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a narrower concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:narrowMatch'} })
     broad_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a broader concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:broadMatch'} })
+    isCategorizedAs: Optional[list[Any]] = Field(default=[], description="""A relationship where an entity has been deemed to be categorized""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'nexus:isCategorizedAs'} })
 
 
 class AiProvider(Organization):
@@ -2897,6 +3174,7 @@ class AiProvider(Organization):
     related_mappings: Optional[list[Any]] = Field(default=[], description="""The property skos:relatedMatch is used to state an associative mapping link between two concepts.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:relatedMatch'} })
     narrow_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a narrower concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:narrowMatch'} })
     broad_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a broader concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:broadMatch'} })
+    isCategorizedAs: Optional[list[Any]] = Field(default=[], description="""A relationship where an entity has been deemed to be categorized""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'nexus:isCategorizedAs'} })
 
 
 class Modality(Entity):
@@ -2917,6 +3195,7 @@ class Modality(Entity):
     related_mappings: Optional[list[Any]] = Field(default=[], description="""The property skos:relatedMatch is used to state an associative mapping link between two concepts.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:relatedMatch'} })
     narrow_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a narrower concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:narrowMatch'} })
     broad_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a broader concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:broadMatch'} })
+    isCategorizedAs: Optional[list[Any]] = Field(default=[], description="""A relationship where an entity has been deemed to be categorized""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'nexus:isCategorizedAs'} })
 
 
 class Input(Entity):
@@ -2937,6 +3216,7 @@ class Input(Entity):
     related_mappings: Optional[list[Any]] = Field(default=[], description="""The property skos:relatedMatch is used to state an associative mapping link between two concepts.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:relatedMatch'} })
     narrow_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a narrower concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:narrowMatch'} })
     broad_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a broader concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:broadMatch'} })
+    isCategorizedAs: Optional[list[Any]] = Field(default=[], description="""A relationship where an entity has been deemed to be categorized""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'nexus:isCategorizedAs'} })
 
 
 class Purpose(Entity):
@@ -2957,6 +3237,7 @@ class Purpose(Entity):
     related_mappings: Optional[list[Any]] = Field(default=[], description="""The property skos:relatedMatch is used to state an associative mapping link between two concepts.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:relatedMatch'} })
     narrow_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a narrower concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:narrowMatch'} })
     broad_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a broader concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:broadMatch'} })
+    isCategorizedAs: Optional[list[Any]] = Field(default=[], description="""A relationship where an entity has been deemed to be categorized""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'nexus:isCategorizedAs'} })
 
 
 class Domain(Entity):
@@ -2977,6 +3258,7 @@ class Domain(Entity):
     related_mappings: Optional[list[Any]] = Field(default=[], description="""The property skos:relatedMatch is used to state an associative mapping link between two concepts.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:relatedMatch'} })
     narrow_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a narrower concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:narrowMatch'} })
     broad_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a broader concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:broadMatch'} })
+    isCategorizedAs: Optional[list[Any]] = Field(default=[], description="""A relationship where an entity has been deemed to be categorized""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'nexus:isCategorizedAs'} })
 
 
 class LocalityOfUse(Entity):
@@ -2997,6 +3279,7 @@ class LocalityOfUse(Entity):
     related_mappings: Optional[list[Any]] = Field(default=[], description="""The property skos:relatedMatch is used to state an associative mapping link between two concepts.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:relatedMatch'} })
     narrow_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a narrower concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:narrowMatch'} })
     broad_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a broader concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:broadMatch'} })
+    isCategorizedAs: Optional[list[Any]] = Field(default=[], description="""A relationship where an entity has been deemed to be categorized""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'nexus:isCategorizedAs'} })
 
 
 class AIComponent(Entity):
@@ -3017,6 +3300,7 @@ class AIComponent(Entity):
     related_mappings: Optional[list[Any]] = Field(default=[], description="""The property skos:relatedMatch is used to state an associative mapping link between two concepts.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:relatedMatch'} })
     narrow_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a narrower concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:narrowMatch'} })
     broad_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a broader concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:broadMatch'} })
+    isCategorizedAs: Optional[list[Any]] = Field(default=[], description="""A relationship where an entity has been deemed to be categorized""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'nexus:isCategorizedAs'} })
 
 
 class AiModel(AIComponent, BaseAi):
@@ -3045,6 +3329,7 @@ class AiModel(AIComponent, BaseAi):
                        'Term',
                        'Principle',
                        'RiskTaxonomy',
+                       'RiskControlGroupTaxonomy',
                        'Action',
                        'BaseAi',
                        'LargeLanguageModelFamily',
@@ -3058,6 +3343,7 @@ class AiModel(AIComponent, BaseAi):
                        'Vocabulary',
                        'Taxonomy',
                        'RiskTaxonomy',
+                       'RiskControlGroupTaxonomy',
                        'BaseAi',
                        'AiEval',
                        'BenchmarkMetadataCard',
@@ -3076,6 +3362,7 @@ class AiModel(AIComponent, BaseAi):
     related_mappings: Optional[list[Any]] = Field(default=[], description="""The property skos:relatedMatch is used to state an associative mapping link between two concepts.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:relatedMatch'} })
     narrow_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a narrower concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:narrowMatch'} })
     broad_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a broader concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:broadMatch'} })
+    isCategorizedAs: Optional[list[Any]] = Field(default=[], description="""A relationship where an entity has been deemed to be categorized""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'nexus:isCategorizedAs'} })
 
 
 class LargeLanguageModel(AiModel):
@@ -3126,6 +3413,7 @@ class LargeLanguageModel(AiModel):
                        'Term',
                        'Principle',
                        'RiskTaxonomy',
+                       'RiskControlGroupTaxonomy',
                        'Action',
                        'BaseAi',
                        'LargeLanguageModelFamily',
@@ -3139,6 +3427,7 @@ class LargeLanguageModel(AiModel):
                        'Vocabulary',
                        'Taxonomy',
                        'RiskTaxonomy',
+                       'RiskControlGroupTaxonomy',
                        'BaseAi',
                        'AiEval',
                        'BenchmarkMetadataCard',
@@ -3157,6 +3446,7 @@ class LargeLanguageModel(AiModel):
     related_mappings: Optional[list[Any]] = Field(default=[], description="""The property skos:relatedMatch is used to state an associative mapping link between two concepts.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:relatedMatch'} })
     narrow_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a narrower concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:narrowMatch'} })
     broad_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a broader concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:broadMatch'} })
+    isCategorizedAs: Optional[list[Any]] = Field(default=[], description="""A relationship where an entity has been deemed to be categorized""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'nexus:isCategorizedAs'} })
 
 
 class Stakeholder(Entity):
@@ -3177,6 +3467,7 @@ class Stakeholder(Entity):
                        'Entry',
                        'Policy',
                        'Rule',
+                       'RiskControlGroup',
                        'RiskGroup',
                        'Risk',
                        'RiskControl',
@@ -3204,6 +3495,7 @@ class Stakeholder(Entity):
     related_mappings: Optional[list[Any]] = Field(default=[], description="""The property skos:relatedMatch is used to state an associative mapping link between two concepts.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:relatedMatch'} })
     narrow_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a narrower concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:narrowMatch'} })
     broad_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a broader concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:broadMatch'} })
+    isCategorizedAs: Optional[list[Any]] = Field(default=[], description="""A relationship where an entity has been deemed to be categorized""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'nexus:isCategorizedAs'} })
 
 
 class AISubject(Stakeholder):
@@ -3219,6 +3511,7 @@ class AISubject(Stakeholder):
                        'Entry',
                        'Policy',
                        'Rule',
+                       'RiskControlGroup',
                        'RiskGroup',
                        'Risk',
                        'RiskControl',
@@ -3246,6 +3539,7 @@ class AISubject(Stakeholder):
     related_mappings: Optional[list[Any]] = Field(default=[], description="""The property skos:relatedMatch is used to state an associative mapping link between two concepts.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:relatedMatch'} })
     narrow_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a narrower concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:narrowMatch'} })
     broad_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a broader concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:broadMatch'} })
+    isCategorizedAs: Optional[list[Any]] = Field(default=[], description="""A relationship where an entity has been deemed to be categorized""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'nexus:isCategorizedAs'} })
 
 
 class AIOperator(Stakeholder):
@@ -3261,6 +3555,7 @@ class AIOperator(Stakeholder):
                        'Entry',
                        'Policy',
                        'Rule',
+                       'RiskControlGroup',
                        'RiskGroup',
                        'Risk',
                        'RiskControl',
@@ -3288,6 +3583,7 @@ class AIOperator(Stakeholder):
     related_mappings: Optional[list[Any]] = Field(default=[], description="""The property skos:relatedMatch is used to state an associative mapping link between two concepts.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:relatedMatch'} })
     narrow_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a narrower concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:narrowMatch'} })
     broad_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a broader concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:broadMatch'} })
+    isCategorizedAs: Optional[list[Any]] = Field(default=[], description="""A relationship where an entity has been deemed to be categorized""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'nexus:isCategorizedAs'} })
 
 
 class AIDeveloper(Stakeholder):
@@ -3303,6 +3599,7 @@ class AIDeveloper(Stakeholder):
                        'Entry',
                        'Policy',
                        'Rule',
+                       'RiskControlGroup',
                        'RiskGroup',
                        'Risk',
                        'RiskControl',
@@ -3330,6 +3627,7 @@ class AIDeveloper(Stakeholder):
     related_mappings: Optional[list[Any]] = Field(default=[], description="""The property skos:relatedMatch is used to state an associative mapping link between two concepts.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:relatedMatch'} })
     narrow_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a narrower concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:narrowMatch'} })
     broad_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a broader concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:broadMatch'} })
+    isCategorizedAs: Optional[list[Any]] = Field(default=[], description="""A relationship where an entity has been deemed to be categorized""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'nexus:isCategorizedAs'} })
 
 
 class AIDeployer(AIOperator):
@@ -3345,6 +3643,7 @@ class AIDeployer(AIOperator):
                        'Entry',
                        'Policy',
                        'Rule',
+                       'RiskControlGroup',
                        'RiskGroup',
                        'Risk',
                        'RiskControl',
@@ -3372,6 +3671,7 @@ class AIDeployer(AIOperator):
     related_mappings: Optional[list[Any]] = Field(default=[], description="""The property skos:relatedMatch is used to state an associative mapping link between two concepts.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:relatedMatch'} })
     narrow_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a narrower concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:narrowMatch'} })
     broad_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a broader concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:broadMatch'} })
+    isCategorizedAs: Optional[list[Any]] = Field(default=[], description="""A relationship where an entity has been deemed to be categorized""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'nexus:isCategorizedAs'} })
 
 
 class AIUser(Stakeholder):
@@ -3387,6 +3687,7 @@ class AIUser(Stakeholder):
                        'Entry',
                        'Policy',
                        'Rule',
+                       'RiskControlGroup',
                        'RiskGroup',
                        'Risk',
                        'RiskControl',
@@ -3414,6 +3715,7 @@ class AIUser(Stakeholder):
     related_mappings: Optional[list[Any]] = Field(default=[], description="""The property skos:relatedMatch is used to state an associative mapping link between two concepts.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:relatedMatch'} })
     narrow_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a narrower concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:narrowMatch'} })
     broad_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a broader concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:broadMatch'} })
+    isCategorizedAs: Optional[list[Any]] = Field(default=[], description="""A relationship where an entity has been deemed to be categorized""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'nexus:isCategorizedAs'} })
 
 
 class StakeholderGroup(Group):
@@ -3428,6 +3730,7 @@ class StakeholderGroup(Group):
                        'Entry',
                        'Policy',
                        'Rule',
+                       'RiskControlGroup',
                        'RiskGroup',
                        'Risk',
                        'RiskControl',
@@ -3447,6 +3750,7 @@ class StakeholderGroup(Group):
                        'Term',
                        'Principle',
                        'RiskTaxonomy',
+                       'RiskControlGroupTaxonomy',
                        'Action',
                        'BaseAi',
                        'LargeLanguageModelFamily',
@@ -3455,7 +3759,7 @@ class StakeholderGroup(Group):
                        'Adapter',
                        'LLMIntrinsic'],
          'slot_uri': 'airo:hasDocumentation'} })
-    hasPart: Optional[list[str]] = Field(default=[], description="""A relationship where an entity has another entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Group', 'RiskGroup', 'CapabilityGroup'],
+    hasPart: Optional[list[str]] = Field(default=[], description="""A relationship where an entity has another entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Group', 'RiskControlGroup', 'RiskGroup', 'CapabilityGroup'],
          'slot_uri': 'skos:member'} })
     belongsToDomain: Optional[Any] = Field(default=None, description="""A relationship where a group belongs to a domain""", json_schema_extra = { "linkml_meta": {'domain_of': ['Group', 'CapabilityGroup'], 'slot_uri': 'schema:isPartOf'} })
     type: Literal["StakeholderGroup"] = Field(default="StakeholderGroup", json_schema_extra = { "linkml_meta": {'designates_type': True,
@@ -3479,6 +3783,8 @@ class StakeholderGroup(Group):
                        'ControlActivityRecommendation',
                        'Requirement'],
          'ifabsent': 'string(Group)'} })
+    narrower: Optional[list[str]] = Field(default=[], json_schema_extra = { "linkml_meta": {'domain_of': ['Group'], 'slot_uri': 'skos:narrower'} })
+    broader: Optional[list[str]] = Field(default=[], json_schema_extra = { "linkml_meta": {'domain_of': ['Group'], 'slot_uri': 'skos:narrower'} })
     id: str = Field(default=..., description="""A unique identifier to this instance of the model element. Example identifiers include UUID, URI, URN, etc.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'schema:identifier'} })
     name: Optional[str] = Field(default=None, description="""A text name of this instance.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity', 'BenchmarkMetadataCard'], 'slot_uri': 'schema:name'} })
     description: Optional[str] = Field(default=None, description="""The description of an entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'schema:description'} })
@@ -3490,6 +3796,7 @@ class StakeholderGroup(Group):
     related_mappings: Optional[list[Any]] = Field(default=[], description="""The property skos:relatedMatch is used to state an associative mapping link between two concepts.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:relatedMatch'} })
     narrow_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a narrower concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:narrowMatch'} })
     broad_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a broader concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:broadMatch'} })
+    isCategorizedAs: Optional[list[Any]] = Field(default=[], description="""A relationship where an entity has been deemed to be categorized""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'nexus:isCategorizedAs'} })
 
 
 class CapabilityTaxonomy(Taxonomy):
@@ -3499,7 +3806,11 @@ class CapabilityTaxonomy(Taxonomy):
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'skos:ConceptScheme',
          'from_schema': 'https://ibm.github.io/ai-atlas-nexus/ontology/ai_capability'})
 
-    version: Optional[str] = Field(default=None, description="""The version of the entity embodied by a specified resource.""", json_schema_extra = { "linkml_meta": {'domain_of': ['License', 'Vocabulary', 'Taxonomy', 'RiskTaxonomy'],
+    version: Optional[str] = Field(default=None, description="""The version of the entity embodied by a specified resource.""", json_schema_extra = { "linkml_meta": {'domain_of': ['License',
+                       'Vocabulary',
+                       'Taxonomy',
+                       'RiskTaxonomy',
+                       'RiskControlGroupTaxonomy'],
          'slot_uri': 'schema:version'} })
     hasDocumentation: Optional[list[str]] = Field(default=[], description="""Indicates documentation associated with an entity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Dataset',
                        'Vocabulary',
@@ -3510,6 +3821,7 @@ class CapabilityTaxonomy(Taxonomy):
                        'Term',
                        'Principle',
                        'RiskTaxonomy',
+                       'RiskControlGroupTaxonomy',
                        'Action',
                        'BaseAi',
                        'LargeLanguageModelFamily',
@@ -3523,6 +3835,7 @@ class CapabilityTaxonomy(Taxonomy):
                        'Vocabulary',
                        'Taxonomy',
                        'RiskTaxonomy',
+                       'RiskControlGroupTaxonomy',
                        'BaseAi',
                        'AiEval',
                        'BenchmarkMetadataCard',
@@ -3559,6 +3872,7 @@ class CapabilityTaxonomy(Taxonomy):
     related_mappings: Optional[list[Any]] = Field(default=[], description="""The property skos:relatedMatch is used to state an associative mapping link between two concepts.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:relatedMatch'} })
     narrow_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a narrower concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:narrowMatch'} })
     broad_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a broader concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:broadMatch'} })
+    isCategorizedAs: Optional[list[Any]] = Field(default=[], description="""A relationship where an entity has been deemed to be categorized""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'nexus:isCategorizedAs'} })
 
 
 class CapabilityConcept(Concept):
@@ -3575,6 +3889,7 @@ class CapabilityConcept(Concept):
                        'Entry',
                        'Policy',
                        'Rule',
+                       'RiskControlGroup',
                        'RiskGroup',
                        'Risk',
                        'RiskControl',
@@ -3594,6 +3909,7 @@ class CapabilityConcept(Concept):
                        'Term',
                        'Principle',
                        'RiskTaxonomy',
+                       'RiskControlGroupTaxonomy',
                        'Action',
                        'BaseAi',
                        'LargeLanguageModelFamily',
@@ -3633,6 +3949,7 @@ class CapabilityConcept(Concept):
     related_mappings: Optional[list[Any]] = Field(default=[], description="""The property skos:relatedMatch is used to state an associative mapping link between two concepts.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:relatedMatch'} })
     narrow_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a narrower concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:narrowMatch'} })
     broad_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a broader concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:broadMatch'} })
+    isCategorizedAs: Optional[list[Any]] = Field(default=[], description="""A relationship where an entity has been deemed to be categorized""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'nexus:isCategorizedAs'} })
 
 
 class CapabilityDomain(CapabilityConcept, Group):
@@ -3653,6 +3970,7 @@ class CapabilityDomain(CapabilityConcept, Group):
                        'Entry',
                        'Policy',
                        'Rule',
+                       'RiskControlGroup',
                        'RiskGroup',
                        'Risk',
                        'RiskControl',
@@ -3672,6 +3990,7 @@ class CapabilityDomain(CapabilityConcept, Group):
                        'Term',
                        'Principle',
                        'RiskTaxonomy',
+                       'RiskControlGroupTaxonomy',
                        'Action',
                        'BaseAi',
                        'LargeLanguageModelFamily',
@@ -3680,7 +3999,7 @@ class CapabilityDomain(CapabilityConcept, Group):
                        'Adapter',
                        'LLMIntrinsic'],
          'slot_uri': 'airo:hasDocumentation'} })
-    hasPart: Optional[list[str]] = Field(default=[], description="""A relationship where a capability domain has capability groups""", json_schema_extra = { "linkml_meta": {'domain_of': ['Group', 'RiskGroup', 'CapabilityGroup'],
+    hasPart: Optional[list[str]] = Field(default=[], description="""A relationship where a capability domain has capability groups""", json_schema_extra = { "linkml_meta": {'domain_of': ['Group', 'RiskControlGroup', 'RiskGroup', 'CapabilityGroup'],
          'slot_uri': 'skos:member'} })
     belongsToDomain: Optional[Any] = Field(default=None, description="""A relationship where a group belongs to a domain""", json_schema_extra = { "linkml_meta": {'domain_of': ['Group', 'CapabilityGroup'], 'slot_uri': 'schema:isPartOf'} })
     type: Literal["CapabilityDomain"] = Field(default="CapabilityDomain", json_schema_extra = { "linkml_meta": {'designates_type': True,
@@ -3704,6 +4023,8 @@ class CapabilityDomain(CapabilityConcept, Group):
                        'ControlActivityRecommendation',
                        'Requirement'],
          'ifabsent': 'string(Group)'} })
+    narrower: Optional[list[str]] = Field(default=[], json_schema_extra = { "linkml_meta": {'domain_of': ['Group'], 'slot_uri': 'skos:narrower'} })
+    broader: Optional[list[str]] = Field(default=[], json_schema_extra = { "linkml_meta": {'domain_of': ['Group'], 'slot_uri': 'skos:narrower'} })
     id: str = Field(default=..., description="""A unique identifier to this instance of the model element. Example identifiers include UUID, URI, URN, etc.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'schema:identifier'} })
     name: Optional[str] = Field(default=None, description="""A text name of this instance.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity', 'BenchmarkMetadataCard'], 'slot_uri': 'schema:name'} })
     description: Optional[str] = Field(default=None, description="""The description of an entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'schema:description'} })
@@ -3715,6 +4036,7 @@ class CapabilityDomain(CapabilityConcept, Group):
     related_mappings: Optional[list[Any]] = Field(default=[], description="""The property skos:relatedMatch is used to state an associative mapping link between two concepts.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:relatedMatch'} })
     narrow_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a narrower concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:narrowMatch'} })
     broad_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a broader concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:broadMatch'} })
+    isCategorizedAs: Optional[list[Any]] = Field(default=[], description="""A relationship where an entity has been deemed to be categorized""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'nexus:isCategorizedAs'} })
 
 
 class CapabilityGroup(CapabilityConcept, Group):
@@ -3744,6 +4066,7 @@ class CapabilityGroup(CapabilityConcept, Group):
                        'Entry',
                        'Policy',
                        'Rule',
+                       'RiskControlGroup',
                        'RiskGroup',
                        'Risk',
                        'RiskControl',
@@ -3760,7 +4083,7 @@ class CapabilityGroup(CapabilityConcept, Group):
                        'Stakeholder',
                        'CapabilityGroup'],
          'slot_uri': 'schema:isPartOf'} })
-    hasPart: Optional[list[str]] = Field(default=[], description="""A relationship where a capability group has capabilities""", json_schema_extra = { "linkml_meta": {'domain_of': ['Group', 'RiskGroup', 'CapabilityGroup'],
+    hasPart: Optional[list[str]] = Field(default=[], description="""A relationship where a capability group has capabilities""", json_schema_extra = { "linkml_meta": {'domain_of': ['Group', 'RiskControlGroup', 'RiskGroup', 'CapabilityGroup'],
          'slot_uri': 'skos:member'} })
     belongsToDomain: Optional[str] = Field(default=None, description="""A relationship where a capability group belongs to a capability domain""", json_schema_extra = { "linkml_meta": {'domain_of': ['Group', 'CapabilityGroup'], 'slot_uri': 'schema:isPartOf'} })
     hasDocumentation: Optional[list[str]] = Field(default=[], description="""Indicates documentation associated with an entity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Dataset',
@@ -3772,6 +4095,7 @@ class CapabilityGroup(CapabilityConcept, Group):
                        'Term',
                        'Principle',
                        'RiskTaxonomy',
+                       'RiskControlGroupTaxonomy',
                        'Action',
                        'BaseAi',
                        'LargeLanguageModelFamily',
@@ -3801,6 +4125,8 @@ class CapabilityGroup(CapabilityConcept, Group):
                        'ControlActivityRecommendation',
                        'Requirement'],
          'ifabsent': 'string(Group)'} })
+    narrower: Optional[list[str]] = Field(default=[], json_schema_extra = { "linkml_meta": {'domain_of': ['Group'], 'slot_uri': 'skos:narrower'} })
+    broader: Optional[list[str]] = Field(default=[], json_schema_extra = { "linkml_meta": {'domain_of': ['Group'], 'slot_uri': 'skos:narrower'} })
     id: str = Field(default=..., description="""A unique identifier to this instance of the model element. Example identifiers include UUID, URI, URN, etc.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'schema:identifier'} })
     name: Optional[str] = Field(default=None, description="""A text name of this instance.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity', 'BenchmarkMetadataCard'], 'slot_uri': 'schema:name'} })
     description: Optional[str] = Field(default=None, description="""The description of an entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'schema:description'} })
@@ -3812,6 +4138,7 @@ class CapabilityGroup(CapabilityConcept, Group):
     related_mappings: Optional[list[Any]] = Field(default=[], description="""The property skos:relatedMatch is used to state an associative mapping link between two concepts.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:relatedMatch'} })
     narrow_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a narrower concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:narrowMatch'} })
     broad_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a broader concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:broadMatch'} })
+    isCategorizedAs: Optional[list[Any]] = Field(default=[], description="""A relationship where an entity has been deemed to be categorized""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'nexus:isCategorizedAs'} })
 
 
 class Capability(CapabilityConcept, Entry):
@@ -3867,6 +4194,7 @@ class Capability(CapabilityConcept, Entry):
                        'Entry',
                        'Policy',
                        'Rule',
+                       'RiskControlGroup',
                        'RiskGroup',
                        'Risk',
                        'RiskControl',
@@ -3888,6 +4216,7 @@ class Capability(CapabilityConcept, Entry):
                        'Term',
                        'Principle',
                        'RiskTaxonomy',
+                       'RiskControlGroupTaxonomy',
                        'Action',
                        'BaseAi',
                        'LargeLanguageModelFamily',
@@ -3905,7 +4234,7 @@ class Capability(CapabilityConcept, Entry):
     requiresCapability: Optional[list[str]] = Field(default=[], description="""Indicates that this entry requires a specific capability""", json_schema_extra = { "linkml_meta": {'domain': 'Any',
          'domain_of': ['Entry', 'LargeLanguageModel', 'AiTask', 'Adapter'],
          'inverse': 'requiredByTask'} })
-    type: Literal["Capability"] = Field(default="Capability", description="""The entry type""", json_schema_extra = { "linkml_meta": {'designates_type': True,
+    type: Literal["Capability"] = Field(default="Capability", description="""The entry type.""", json_schema_extra = { "linkml_meta": {'designates_type': True,
          'domain_of': ['Vocabulary',
                        'Taxonomy',
                        'Concept',
@@ -3936,6 +4265,7 @@ class Capability(CapabilityConcept, Entry):
     related_mappings: Optional[list[Any]] = Field(default=[], description="""The property skos:relatedMatch is used to state an associative mapping link between two concepts.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:relatedMatch'} })
     narrow_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a narrower concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:narrowMatch'} })
     broad_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a broader concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:broadMatch'} })
+    isCategorizedAs: Optional[list[Any]] = Field(default=[], description="""A relationship where an entity has been deemed to be categorized""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'nexus:isCategorizedAs'} })
 
 
 class AiEval(Entity):
@@ -3962,6 +4292,7 @@ class AiEval(Entity):
                        'Term',
                        'Principle',
                        'RiskTaxonomy',
+                       'RiskControlGroupTaxonomy',
                        'Action',
                        'BaseAi',
                        'LargeLanguageModelFamily',
@@ -3979,6 +4310,7 @@ class AiEval(Entity):
                        'Vocabulary',
                        'Taxonomy',
                        'RiskTaxonomy',
+                       'RiskControlGroupTaxonomy',
                        'BaseAi',
                        'AiEval',
                        'BenchmarkMetadataCard',
@@ -4007,6 +4339,7 @@ class AiEval(Entity):
     related_mappings: Optional[list[Any]] = Field(default=[], description="""The property skos:relatedMatch is used to state an associative mapping link between two concepts.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:relatedMatch'} })
     narrow_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a narrower concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:narrowMatch'} })
     broad_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a broader concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:broadMatch'} })
+    isCategorizedAs: Optional[list[Any]] = Field(default=[], description="""A relationship where an entity has been deemed to be categorized""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'nexus:isCategorizedAs'} })
 
 
 class AiEvalResult(Fact, Entity):
@@ -4031,6 +4364,7 @@ class AiEvalResult(Fact, Entity):
     related_mappings: Optional[list[Any]] = Field(default=[], description="""The property skos:relatedMatch is used to state an associative mapping link between two concepts.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:relatedMatch'} })
     narrow_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a narrower concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:narrowMatch'} })
     broad_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a broader concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:broadMatch'} })
+    isCategorizedAs: Optional[list[Any]] = Field(default=[], description="""A relationship where an entity has been deemed to be categorized""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'nexus:isCategorizedAs'} })
 
 
 class BenchmarkMetadataCard(Entity):
@@ -4080,6 +4414,7 @@ class BenchmarkMetadataCard(Entity):
                        'Vocabulary',
                        'Taxonomy',
                        'RiskTaxonomy',
+                       'RiskControlGroupTaxonomy',
                        'BaseAi',
                        'AiEval',
                        'BenchmarkMetadataCard',
@@ -4096,6 +4431,7 @@ class BenchmarkMetadataCard(Entity):
                        'Term',
                        'Principle',
                        'RiskTaxonomy',
+                       'RiskControlGroupTaxonomy',
                        'Action',
                        'BaseAi',
                        'LargeLanguageModelFamily',
@@ -4116,6 +4452,7 @@ class BenchmarkMetadataCard(Entity):
     related_mappings: Optional[list[Any]] = Field(default=[], description="""The property skos:relatedMatch is used to state an associative mapping link between two concepts.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:relatedMatch'} })
     narrow_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a narrower concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:narrowMatch'} })
     broad_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a broader concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:broadMatch'} })
+    isCategorizedAs: Optional[list[Any]] = Field(default=[], description="""A relationship where an entity has been deemed to be categorized""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'nexus:isCategorizedAs'} })
 
 
 class Question(AiEval):
@@ -4134,6 +4471,7 @@ class Question(AiEval):
                        'Term',
                        'Principle',
                        'RiskTaxonomy',
+                       'RiskControlGroupTaxonomy',
                        'Action',
                        'BaseAi',
                        'LargeLanguageModelFamily',
@@ -4151,6 +4489,7 @@ class Question(AiEval):
                        'Vocabulary',
                        'Taxonomy',
                        'RiskTaxonomy',
+                       'RiskControlGroupTaxonomy',
                        'BaseAi',
                        'AiEval',
                        'BenchmarkMetadataCard',
@@ -4179,6 +4518,7 @@ class Question(AiEval):
     related_mappings: Optional[list[Any]] = Field(default=[], description="""The property skos:relatedMatch is used to state an associative mapping link between two concepts.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:relatedMatch'} })
     narrow_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a narrower concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:narrowMatch'} })
     broad_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a broader concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:broadMatch'} })
+    isCategorizedAs: Optional[list[Any]] = Field(default=[], description="""A relationship where an entity has been deemed to be categorized""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'nexus:isCategorizedAs'} })
 
 
 class Questionnaire(AiEval):
@@ -4197,6 +4537,7 @@ class Questionnaire(AiEval):
                        'Term',
                        'Principle',
                        'RiskTaxonomy',
+                       'RiskControlGroupTaxonomy',
                        'Action',
                        'BaseAi',
                        'LargeLanguageModelFamily',
@@ -4214,6 +4555,7 @@ class Questionnaire(AiEval):
                        'Vocabulary',
                        'Taxonomy',
                        'RiskTaxonomy',
+                       'RiskControlGroupTaxonomy',
                        'BaseAi',
                        'AiEval',
                        'BenchmarkMetadataCard',
@@ -4242,6 +4584,7 @@ class Questionnaire(AiEval):
     related_mappings: Optional[list[Any]] = Field(default=[], description="""The property skos:relatedMatch is used to state an associative mapping link between two concepts.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:relatedMatch'} })
     narrow_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a narrower concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:narrowMatch'} })
     broad_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a broader concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:broadMatch'} })
+    isCategorizedAs: Optional[list[Any]] = Field(default=[], description="""A relationship where an entity has been deemed to be categorized""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'nexus:isCategorizedAs'} })
 
 
 class Adapter(LargeLanguageModel, Entry):
@@ -4263,6 +4606,7 @@ class Adapter(LargeLanguageModel, Entry):
                        'Term',
                        'Principle',
                        'RiskTaxonomy',
+                       'RiskControlGroupTaxonomy',
                        'Action',
                        'BaseAi',
                        'LargeLanguageModelFamily',
@@ -4276,6 +4620,7 @@ class Adapter(LargeLanguageModel, Entry):
                        'Vocabulary',
                        'Taxonomy',
                        'RiskTaxonomy',
+                       'RiskControlGroupTaxonomy',
                        'BaseAi',
                        'AiEval',
                        'BenchmarkMetadataCard',
@@ -4321,6 +4666,7 @@ class Adapter(LargeLanguageModel, Entry):
                        'Entry',
                        'Policy',
                        'Rule',
+                       'RiskControlGroup',
                        'RiskGroup',
                        'Risk',
                        'RiskControl',
@@ -4332,11 +4678,10 @@ class Adapter(LargeLanguageModel, Entry):
                        'Requirement'],
          'slot_uri': 'schema:isPartOf'} })
     requiredByTask: Optional[list[str]] = Field(default=[], description="""Indicates that this entry is required to perform a specific AI task.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entry', 'Capability'], 'inverse': 'requiresCapability'} })
-    implementedByAdapter: Optional[list[str]] = Field(default=[], description="""Indicates that this capability is implemented by a specific adapter. This relationship distinguishes the abstract capability (what can be done) from the technical implementation mechanism (how it is added/extended via adapters).
-""", json_schema_extra = { "linkml_meta": {'domain': 'Any',
+    implementedByAdapter: Optional[list[str]] = Field(default=[], description="""Indicates that this capability is implemented by a specific adapter. This relationship distinguishes the abstract capability (what can be done) from the technical implementation mechanism (how it is added/extended via adapters).""", json_schema_extra = { "linkml_meta": {'domain': 'Any',
          'domain_of': ['Entry', 'Capability'],
          'inverse': 'implementsCapability'} })
-    type: Literal["Adapter"] = Field(default="Adapter", description="""The entry type""", json_schema_extra = { "linkml_meta": {'designates_type': True,
+    type: Literal["Adapter"] = Field(default="Adapter", description="""The entry type.""", json_schema_extra = { "linkml_meta": {'designates_type': True,
          'domain_of': ['Vocabulary',
                        'Taxonomy',
                        'Concept',
@@ -4367,6 +4712,7 @@ class Adapter(LargeLanguageModel, Entry):
     related_mappings: Optional[list[Any]] = Field(default=[], description="""The property skos:relatedMatch is used to state an associative mapping link between two concepts.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:relatedMatch'} })
     narrow_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a narrower concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:narrowMatch'} })
     broad_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a broader concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:broadMatch'} })
+    isCategorizedAs: Optional[list[Any]] = Field(default=[], description="""A relationship where an entity has been deemed to be categorized""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'nexus:isCategorizedAs'} })
     hasEvaluation: Optional[list[str]] = Field(default=[], description="""A relationship indicating that an entity has an AI evaluation result.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AiModel'], 'slot_uri': 'dqv:hasQualityMeasurement'} })
     architecture: Optional[str] = Field(default=None, description="""A description of the architecture of an AI such as 'Decoder-only'.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AiModel']} })
     gpu_hours: Optional[int] = Field(default=None, description="""GPU consumption in terms of hours""", ge=0, json_schema_extra = { "linkml_meta": {'domain_of': ['AiModel']} })
@@ -4409,6 +4755,7 @@ class LLMIntrinsic(Entry):
                        'Term',
                        'Principle',
                        'RiskTaxonomy',
+                       'RiskControlGroupTaxonomy',
                        'Action',
                        'BaseAi',
                        'LargeLanguageModelFamily',
@@ -4429,6 +4776,7 @@ class LLMIntrinsic(Entry):
                        'Entry',
                        'Policy',
                        'Rule',
+                       'RiskControlGroup',
                        'RiskGroup',
                        'Risk',
                        'RiskControl',
@@ -4449,11 +4797,10 @@ class LLMIntrinsic(Entry):
     requiresCapability: Optional[list[str]] = Field(default=[], description="""Indicates that this entry requires a specific capability""", json_schema_extra = { "linkml_meta": {'domain': 'Any',
          'domain_of': ['Entry', 'LargeLanguageModel', 'AiTask', 'Adapter'],
          'inverse': 'requiredByTask'} })
-    implementedByAdapter: Optional[list[str]] = Field(default=[], description="""Indicates that this capability is implemented by a specific adapter. This relationship distinguishes the abstract capability (what can be done) from the technical implementation mechanism (how it is added/extended via adapters).
-""", json_schema_extra = { "linkml_meta": {'domain': 'Any',
+    implementedByAdapter: Optional[list[str]] = Field(default=[], description="""Indicates that this capability is implemented by a specific adapter. This relationship distinguishes the abstract capability (what can be done) from the technical implementation mechanism (how it is added/extended via adapters).""", json_schema_extra = { "linkml_meta": {'domain': 'Any',
          'domain_of': ['Entry', 'Capability'],
          'inverse': 'implementsCapability'} })
-    type: Literal["LLMIntrinsic"] = Field(default="LLMIntrinsic", description="""The entry type""", json_schema_extra = { "linkml_meta": {'designates_type': True,
+    type: Literal["LLMIntrinsic"] = Field(default="LLMIntrinsic", description="""The entry type.""", json_schema_extra = { "linkml_meta": {'designates_type': True,
          'domain_of': ['Vocabulary',
                        'Taxonomy',
                        'Concept',
@@ -4484,6 +4831,7 @@ class LLMIntrinsic(Entry):
     related_mappings: Optional[list[Any]] = Field(default=[], description="""The property skos:relatedMatch is used to state an associative mapping link between two concepts.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:relatedMatch'} })
     narrow_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a narrower concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:narrowMatch'} })
     broad_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a broader concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:broadMatch'} })
+    isCategorizedAs: Optional[list[Any]] = Field(default=[], description="""A relationship where an entity has been deemed to be categorized""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'nexus:isCategorizedAs'} })
 
 
 class AiOffice(Organization):
@@ -4505,6 +4853,7 @@ class AiOffice(Organization):
     related_mappings: Optional[list[Any]] = Field(default=[], description="""The property skos:relatedMatch is used to state an associative mapping link between two concepts.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:relatedMatch'} })
     narrow_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a narrower concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:narrowMatch'} })
     broad_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a broader concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:broadMatch'} })
+    isCategorizedAs: Optional[list[Any]] = Field(default=[], description="""A relationship where an entity has been deemed to be categorized""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'nexus:isCategorizedAs'} })
 
 
 class ControlActivity(Rule):
@@ -4549,6 +4898,7 @@ class ControlActivity(Rule):
                        'Entry',
                        'Policy',
                        'Rule',
+                       'RiskControlGroup',
                        'RiskGroup',
                        'Risk',
                        'RiskControl',
@@ -4572,6 +4922,7 @@ class ControlActivity(Rule):
     related_mappings: Optional[list[Any]] = Field(default=[], description="""The property skos:relatedMatch is used to state an associative mapping link between two concepts.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:relatedMatch'} })
     narrow_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a narrower concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:narrowMatch'} })
     broad_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a broader concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:broadMatch'} })
+    isCategorizedAs: Optional[list[Any]] = Field(default=[], description="""A relationship where an entity has been deemed to be categorized""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'nexus:isCategorizedAs'} })
 
 
 class ControlActivityPermission(ControlActivity, Permission):
@@ -4617,6 +4968,7 @@ class ControlActivityPermission(ControlActivity, Permission):
                        'Entry',
                        'Policy',
                        'Rule',
+                       'RiskControlGroup',
                        'RiskGroup',
                        'Risk',
                        'RiskControl',
@@ -4640,6 +4992,7 @@ class ControlActivityPermission(ControlActivity, Permission):
     related_mappings: Optional[list[Any]] = Field(default=[], description="""The property skos:relatedMatch is used to state an associative mapping link between two concepts.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:relatedMatch'} })
     narrow_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a narrower concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:narrowMatch'} })
     broad_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a broader concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:broadMatch'} })
+    isCategorizedAs: Optional[list[Any]] = Field(default=[], description="""A relationship where an entity has been deemed to be categorized""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'nexus:isCategorizedAs'} })
 
 
 class ControlActivityProhibition(ControlActivity, Prohibition):
@@ -4685,6 +5038,7 @@ class ControlActivityProhibition(ControlActivity, Prohibition):
                        'Entry',
                        'Policy',
                        'Rule',
+                       'RiskControlGroup',
                        'RiskGroup',
                        'Risk',
                        'RiskControl',
@@ -4708,6 +5062,7 @@ class ControlActivityProhibition(ControlActivity, Prohibition):
     related_mappings: Optional[list[Any]] = Field(default=[], description="""The property skos:relatedMatch is used to state an associative mapping link between two concepts.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:relatedMatch'} })
     narrow_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a narrower concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:narrowMatch'} })
     broad_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a broader concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:broadMatch'} })
+    isCategorizedAs: Optional[list[Any]] = Field(default=[], description="""A relationship where an entity has been deemed to be categorized""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'nexus:isCategorizedAs'} })
 
 
 class ControlActivityObligation(ControlActivity, Obligation):
@@ -4753,6 +5108,7 @@ class ControlActivityObligation(ControlActivity, Obligation):
                        'Entry',
                        'Policy',
                        'Rule',
+                       'RiskControlGroup',
                        'RiskGroup',
                        'Risk',
                        'RiskControl',
@@ -4776,6 +5132,7 @@ class ControlActivityObligation(ControlActivity, Obligation):
     related_mappings: Optional[list[Any]] = Field(default=[], description="""The property skos:relatedMatch is used to state an associative mapping link between two concepts.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:relatedMatch'} })
     narrow_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a narrower concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:narrowMatch'} })
     broad_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a broader concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:broadMatch'} })
+    isCategorizedAs: Optional[list[Any]] = Field(default=[], description="""A relationship where an entity has been deemed to be categorized""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'nexus:isCategorizedAs'} })
 
 
 class ControlActivityRecommendation(ControlActivity, Recommendation):
@@ -4821,6 +5178,7 @@ class ControlActivityRecommendation(ControlActivity, Recommendation):
                        'Entry',
                        'Policy',
                        'Rule',
+                       'RiskControlGroup',
                        'RiskGroup',
                        'Risk',
                        'RiskControl',
@@ -4844,6 +5202,7 @@ class ControlActivityRecommendation(ControlActivity, Recommendation):
     related_mappings: Optional[list[Any]] = Field(default=[], description="""The property skos:relatedMatch is used to state an associative mapping link between two concepts.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:relatedMatch'} })
     narrow_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a narrower concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:narrowMatch'} })
     broad_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a broader concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:broadMatch'} })
+    isCategorizedAs: Optional[list[Any]] = Field(default=[], description="""A relationship where an entity has been deemed to be categorized""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'nexus:isCategorizedAs'} })
 
 
 class Requirement(Rule):
@@ -4871,6 +5230,7 @@ class Requirement(Rule):
                        'Entry',
                        'Policy',
                        'Rule',
+                       'RiskControlGroup',
                        'RiskGroup',
                        'Risk',
                        'RiskControl',
@@ -4914,6 +5274,7 @@ class Requirement(Rule):
     related_mappings: Optional[list[Any]] = Field(default=[], description="""The property skos:relatedMatch is used to state an associative mapping link between two concepts.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:relatedMatch'} })
     narrow_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a narrower concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:narrowMatch'} })
     broad_mappings: Optional[list[Any]] = Field(default=[], description="""The property is used to state a hierarchical mapping link between two concepts, indicating that the concept linked to, is a broader concept than the originating concept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'skos:broadMatch'} })
+    isCategorizedAs: Optional[list[Any]] = Field(default=[], description="""A relationship where an entity has been deemed to be categorized""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'nexus:isCategorizedAs'} })
 
 
 class Container(ConfiguredBaseModel):
@@ -4931,10 +5292,10 @@ class Container(ConfiguredBaseModel):
     datasets: Optional[list[Dataset]] = Field(default=[], description="""A list of data sets""", json_schema_extra = { "linkml_meta": {'domain_of': ['Container']} })
     llmintrinsics: Optional[list[LLMIntrinsic]] = Field(default=[], description="""A list of LLMIntrinsics""", json_schema_extra = { "linkml_meta": {'domain_of': ['Container']} })
     adapters: Optional[list[Adapter]] = Field(default=[], description="""A list of Adapters""", json_schema_extra = { "linkml_meta": {'domain_of': ['Container']} })
-    taxonomies: Optional[list[Union[Taxonomy,RiskTaxonomy,CapabilityTaxonomy]]] = Field(default=[], description="""A list of taxonomies""", json_schema_extra = { "linkml_meta": {'domain_of': ['Container']} })
-    concepts: Optional[list[Union[Concept,RiskConcept,CapabilityConcept,CapabilityDomain,CapabilityGroup,Capability,RiskGroup,Risk,RiskControl,RiskIncident,Impact,Action]]] = Field(default=[], description="""A list of concepts""", json_schema_extra = { "linkml_meta": {'domain_of': ['Container']} })
+    taxonomies: Optional[list[Union[Taxonomy,RiskTaxonomy,RiskControlGroupTaxonomy,CapabilityTaxonomy]]] = Field(default=[], description="""A list of taxonomies""", json_schema_extra = { "linkml_meta": {'domain_of': ['Container']} })
+    concepts: Optional[list[Union[Concept,RiskConcept,CapabilityConcept,CapabilityDomain,CapabilityGroup,Capability,RiskControlGroup,RiskGroup,Risk,RiskControl,RiskIncident,Impact,Action]]] = Field(default=[], description="""A list of concepts""", json_schema_extra = { "linkml_meta": {'domain_of': ['Container']} })
     entries: Optional[list[Union[Entry,Term,Principle,Certification,Risk,AiSystem,AiTask,Capability,Adapter,LLMIntrinsic,AiAgent]]] = Field(default=[], description="""A list of entries""", json_schema_extra = { "linkml_meta": {'domain_of': ['Container']} })
-    groups: Optional[list[Union[Group,RiskGroup,StakeholderGroup,CapabilityDomain,CapabilityGroup]]] = Field(default=[], description="""A list of groups""", json_schema_extra = { "linkml_meta": {'domain_of': ['Container']} })
+    groups: Optional[list[Union[Group,RiskControlGroup,RiskGroup,StakeholderGroup,CapabilityDomain,CapabilityGroup]]] = Field(default=[], description="""A list of groups""", json_schema_extra = { "linkml_meta": {'domain_of': ['Container']} })
     vocabularies: Optional[list[Vocabulary]] = Field(default=[], description="""A list of vocabularies""", json_schema_extra = { "linkml_meta": {'domain_of': ['Container']} })
     controls: Optional[list[Union[Control,RiskControl,Action]]] = Field(default=[], description="""A list of AI controls""", json_schema_extra = { "linkml_meta": {'domain_of': ['Container']} })
     riskincidents: Optional[list[RiskIncident]] = Field(default=[], description="""A list of AI risk incidents""", json_schema_extra = { "linkml_meta": {'domain_of': ['Container']} })
@@ -4978,7 +5339,9 @@ Obligation.model_rebuild()
 Recommendation.model_rebuild()
 Certification.model_rebuild()
 RiskTaxonomy.model_rebuild()
+RiskControlGroupTaxonomy.model_rebuild()
 RiskConcept.model_rebuild()
+RiskControlGroup.model_rebuild()
 RiskGroup.model_rebuild()
 Risk.model_rebuild()
 RiskControl.model_rebuild()
