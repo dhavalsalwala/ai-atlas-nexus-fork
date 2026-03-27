@@ -833,12 +833,12 @@ class AIAtlasNexus:
                 risk_detections = risk.isDetectedBy if isinstance(risk.isDetectedBy, list) else [risk.isDetectedBy]
                 detectors.extend(risk_detections)
 
-            mappings = itertools.chain(
+            mappings = list(itertools.chain(
                 risk.related_mappings or [],
                 risk.broad_mappings or [],
                 risk.close_mappings or [],
                 risk.exact_mappings or []
-            )
+            ))
 
             control_ids.extend(cls._atlas_explorer.filter_ids_by_type(ids=mappings, disallowed_types=["Risk"]))
             control_ids = list(set(control_ids))
