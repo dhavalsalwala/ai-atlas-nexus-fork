@@ -162,7 +162,7 @@ class MelleaInferenceBackend(InferenceBackend):
 
         try:
             if not isinstance(messages[0], str):
-                raise Exception("Chat input should always be a plain string.")
+                raise Exception("Mellea chat input should always be a plain string.")
 
             response_thunk = self.session.chat(
                 content=messages[0],
