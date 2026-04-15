@@ -5,6 +5,9 @@ from ai_atlas_nexus.ai_risk_ontology.datamodel.ai_risk_ontology import Risk
 from ai_atlas_nexus.blocks.inference import TextGenerationInferenceOutput
 from ai_atlas_nexus.blocks.prompt_response_schema import LIST_OF_STR_SCHEMA
 from ai_atlas_nexus.blocks.risk_detector import RiskDetector
+from ai_atlas_nexus.data import load_resource
+
+BENCHMARK_COT = load_resource("risk_generation_cot_benchmarks.json")
 
 
 # Benchmark-specific risk identification template
@@ -46,6 +49,12 @@ Risks: """
 
 
 class BenchmarkRiskDetector(RiskDetector):
+
+    def __init__(self, risks, inference_engine, cot_examples=None, **kwargs):
+        # Use benchmark-specific CoT examples by default
+        if cot_examples is None:
+            cot_examples = BENCHMARK_COT.get("ibm-risk-atlas")
+        super().__init__(risks=risks, inference_engine=inference_engine, cot_examples=cot_examples, **kwargs)
 
     def detect(self, usecases: List[str]) -> List[List[Risk]]:
         prompts = [

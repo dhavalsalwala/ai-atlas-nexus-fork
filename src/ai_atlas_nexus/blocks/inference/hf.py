@@ -1,4 +1,5 @@
 import os
+from functools import partial
 from typing import Dict, List, Union
 
 import httpx
@@ -9,13 +10,17 @@ from ai_atlas_nexus.blocks.inference.base import InferenceEngine
 from ai_atlas_nexus.blocks.inference.params import (
     HFInferenceEngineParams,
     InferenceEngineCredentials,
+    MelleaInferenceParams,
     OpenAIChatCompletionMessageParam,
     TextGenerationInferenceOutput,
 )
 from ai_atlas_nexus.blocks.inference.postprocessing import postprocess
-from ai_atlas_nexus.exceptions import RiskInferenceError
+from ai_atlas_nexus.exceptions import InferenceError
 from ai_atlas_nexus.metadata_base import InferenceEngineType
-from ai_atlas_nexus.toolkit.job_utils import run_parallel
+from ai_atlas_nexus.toolkit.job_utils import (
+    run_parallel,
+    unwrap_arguments_and_call_func,
+)
 
 
 # load .env file to environment
@@ -62,23 +67,21 @@ class HFInferenceEngine(InferenceEngine):
             api_key=api_key, api_url=api_url, org_id=org_id
         )
 
-    def create_client(self, credentials):
+    def create_client(self):
         from openai import OpenAI
 
         default_headers = {}
-        if credentials.get("org_id"):
-            default_headers["X-HF-Bill-To"] = credentials["org_id"]
+        if self.credentials.get("org_id"):
+            default_headers["X-HF-Bill-To"] = self.credentials["org_id"]
 
         return OpenAI(
-            api_key=credentials["api_key"],
-            base_url=credentials["api_url"],
+            api_key=self.credentials["api_key"],
+            base_url=self.credentials["api_url"],
             default_headers=default_headers,
             timeout=httpx.Timeout(None, connect=5.0),
         )
 
     def ping(self):
-        # HF router may not support model listing; a lightweight
-        # completions call would be expensive.  Accept silently.
         try:
             self.client.models.list()
         except NotFoundError:
@@ -87,64 +90,101 @@ class HFInferenceEngine(InferenceEngine):
     @postprocess
     def generate(
         self,
-        prompts: List[str],
+        prompts: Union[List[str], List[MelleaInferenceParams]],
         response_format=None,
-        postprocessors=None,
+        postprocessors: List[str] = None,
         verbose=True,
     ) -> List[TextGenerationInferenceOutput]:
-        return self.chat(prompts, response_format, postprocessors, verbose)
+        try:
+            return [
+                self._prepare_chat_output(response)
+                for response in run_parallel(
+                    func=partial(
+                        unwrap_arguments_and_call_func,
+                        partial(self.backend.generate_text, response_format),
+                    ),
+                    items=prompts,
+                    desc=f"Inferring with {self._inference_engine_type}, backend - {self.backend._backend_type.upper()}",
+                    concurrency_limit=self.concurrency_limit,
+                    verbose=verbose,
+                )
+            ]
+        except Exception as e:
+            raise InferenceError(str(e))
+
+    def generate_text(self, response_format, prompt):
+        return self.client.chat.completions.create(
+            messages=self._to_openai_format(prompt),
+            model=self.model_name_or_path,
+            response_format=self._create_schema_format(self.format(response_format)),
+            **self.parameters,
+        )
 
     @postprocess
     def chat(
         self,
         messages: Union[
-            List[OpenAIChatCompletionMessageParam],
+            str,
             List[str],
+            OpenAIChatCompletionMessageParam,
+            List[OpenAIChatCompletionMessageParam],
         ],
+        tools=None,
         response_format=None,
-        postprocessors=None,
+        postprocessors: List[str] = None,
         verbose=True,
     ) -> TextGenerationInferenceOutput:
-
-        def chat_response(messages):
-            response = self.client.chat.completions.create(
-                messages=self._to_openai_format(messages),
-                model=self.model_name_or_path,
-                response_format=self._create_schema_format(response_format),
-                **self.parameters,
-            )
-            return self._prepare_chat_output(response)
-
         try:
-            return run_parallel(
-                chat_response,
-                messages,
-                f"Inferring with {self._inference_engine_type}",
-                self.concurrency_limit,
-                verbose=verbose,
-            )
-        except BadRequestError as e:
-            msg = e.body.get("message", str(e)) if isinstance(e.body, dict) else str(e)
-            raise RiskInferenceError(msg)
+            return [
+                self._prepare_chat_output(response)
+                for response in run_parallel(
+                    func=partial(
+                        unwrap_arguments_and_call_func,
+                        partial(
+                            self.backend.generate_chat_response, response_format, tools
+                        ),
+                    ),
+                    items=self._validate_chat_messages(messages),
+                    desc=f"Inferring with {self._inference_engine_type}, backend - {self.backend._backend_type.upper()}",
+                    concurrency_limit=self.concurrency_limit,
+                    verbose=verbose,
+                )
+            ]
         except Exception as e:
-            raise RiskInferenceError(str(e))
+            raise InferenceError(str(e))
+
+    def generate_chat_response(self, response_format, tools, messages):
+        return self.client.chat.completions.create(
+            messages=self._to_openai_format(messages),
+            model=self.model_name_or_path,
+            tools=tools,
+            response_format=self._create_schema_format(self.format(response_format)),
+            **self.parameters,
+        )
 
     def _prepare_chat_output(self, response):
+        if isinstance(response, str):
+            prediction_data = {"prediction": response}
+        else:
+            prediction_data = {
+                "prediction": response.choices[0].message.content,
+                "input_tokens": response.usage.total_tokens,
+                "output_tokens": response.usage.completion_tokens,
+                "stop_reason": response.choices[0].finish_reason,
+                "logprobs": (
+                    {
+                        output.token: output.logprob
+                        for output in response.choices[0].logprobs.content
+                    }
+                    if response.choices[0].logprobs
+                    else None
+                ),
+            }
+
         return TextGenerationInferenceOutput(
-            prediction=response.choices[0].message.content,
-            input_tokens=response.usage.total_tokens,
-            output_tokens=response.usage.completion_tokens,
-            stop_reason=response.choices[0].finish_reason,
             model_name_or_path=self.model_name_or_path,
-            logprobs=(
-                {
-                    output.token: output.logprob
-                    for output in response.choices[0].logprobs.content
-                }
-                if response.choices[0].logprobs
-                else None
-            ),
             inference_engine=str(self._inference_engine_type),
+            **prediction_data,
         )
 
     def _create_schema_format(self, response_format):
