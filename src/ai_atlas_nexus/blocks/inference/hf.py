@@ -4,7 +4,6 @@ from typing import Dict, List, Union
 
 import httpx
 from dotenv import load_dotenv
-from openai import BadRequestError, NotFoundError
 
 from ai_atlas_nexus.blocks.inference.base import InferenceEngine
 from ai_atlas_nexus.blocks.inference.params import (
@@ -21,7 +20,10 @@ from ai_atlas_nexus.toolkit.job_utils import (
     run_parallel,
     unwrap_arguments_and_call_func,
 )
+from ai_atlas_nexus.toolkit.logging import configure_logger
 
+
+logger = configure_logger(__name__)
 
 # load .env file to environment
 load_dotenv()
@@ -82,10 +84,11 @@ class HFInferenceEngine(InferenceEngine):
         )
 
     def ping(self):
-        try:
-            self.client.models.list()
-        except NotFoundError:
-            pass
+        available_models = [model.id for model in self.client.models.list().data]
+        if self.model_name_or_path not in available_models:
+            raise Exception(
+                f"Model `{self.model_name_or_path}` not found or not available for inference on HuggingFace."
+            )
 
     @postprocess
     def generate(
