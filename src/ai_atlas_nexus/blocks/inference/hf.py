@@ -88,7 +88,7 @@ class HFInferenceEngine(InferenceEngine):
 
         try:
             available_models = [model.id for model in self.client.models.list().data]
-        except APIConnectionError:
+        except NotFoundError:
             raise Exception("Connection error. Please check HF API URL.")
         except (AuthenticationError, PermissionDeniedError):
             raise Exception("Authentication failed. Invalid HF_TOKEN.")
