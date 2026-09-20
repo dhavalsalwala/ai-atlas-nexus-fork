@@ -28,15 +28,6 @@ URI: [nexus:implementedByIntrinsic](https://w3id.org/ai-atlas-nexus/implementedB
 | ----------- | ----- |
 | Multivalued | Yes   |
 
-<details>
-<summary>Relationship Properties</summary>
-
-| Property | Value                                           |
-| -------- | ----------------------------------------------- |
-| Inverse  | [implementsCapability](implementsCapability.md) |
-
-</details>
-
 ## Identifier and Mapping Information
 
 ### Schema Source
@@ -61,7 +52,6 @@ description: Indicates that this capability is implemented by a specific LLM int
 from_schema: https://w3id.org/ai-atlas-nexus/ai-risk-ontology
 rank: 1000
 domain: Any
-inverse: implementsCapability
 range: Any
 multivalued: true
 inlined: false

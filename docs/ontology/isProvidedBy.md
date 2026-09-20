@@ -18,7 +18,7 @@ URI: [schema:provider](http://schema.org/provider)
 | Name                                        | Description                                                                      | Modifies Slot |
 | ------------------------------------------- | -------------------------------------------------------------------------------- | ------------- |
 | [Dataset](Dataset.md)                       | A body of structured information describing some topic(s) of interest            | no            |
-| [BaseAi](BaseAi.md)                         | Any type of AI, be it a LLM, RL agent, SVM, etc                                  | no            |
+| [BaseAi](BaseAi.md)                         | Any type of AI, be it a LLM, RL agent, SVM, etc                                  | yes           |
 | [AiSystem](AiSystem.md)                     | A compound AI System composed of one or more AI capablities                      | no            |
 | [AiAgent](AiAgent.md)                       | An artificial intelligence (AI) agent refers to a system or program that is c... | yes           |
 | [AiModel](AiModel.md)                       | A base AI Model class                                                            | no            |

@@ -1,6 +1,6 @@
 [project]
 name = "ai-atlas-nexus"
-version = "1.2.4"
+version = "1.2.5"
 authors = [
     { name = "AI Atlas Nexus", email = "ai-atlas-nexus@ibm.com" },
     { name = "Elizabeth Daly", email = "elizabeth.daly@ie.ibm.com" },
@@ -68,7 +68,8 @@ dependencies = [
 [project.optional-dependencies]
 wml = ["ibm-watsonx-ai"]
 ollama = ["ollama"]
-vllm = ["vllm", "xgrammar"]
+vllm = ["vllm>=0.26.0", "xgrammar"]
+bedrock = ["boto3", "botocore"]
 docs = [
     "mkdocs-material",
     "mkdocs-jupyter",

@@ -318,8 +318,8 @@ URI: [airo:AISystem](https://w3id.org/airo#AISystem)
 
 
 
-        AiSystem --> "0..1" Organization : isProvidedBy
-        click Organization href "../Organization/"
+        AiSystem --> "0..1" AiProvider : isProvidedBy
+        click AiProvider href "../AiProvider/"
 
 
 
@@ -436,7 +436,7 @@ URI: [airo:AISystem](https://w3id.org/airo#AISystem)
 | [hasDocumentation](hasDocumentation.md)           | \* <br/> [Documentation](Documentation.md)         | Indicates documentation associated with an entity                                | [Entry](Entry.md), [BaseAi](BaseAi.md) |
 | [hasLicense](hasLicense.md)                       | 0..1 <br/> [License](License.md)                   | Indicates licenses associated with a resource                                    | [BaseAi](BaseAi.md)                    |
 | [performsTask](performsTask.md)                   | \* <br/> [AiTask](AiTask.md)                       | relationship indicating the AI tasks an AI model can perform                     | [BaseAi](BaseAi.md)                    |
-| [isProvidedBy](isProvidedBy.md)                   | 0..1 <br/> [Organization](Organization.md)         | A relationship to the Organization instance that provides this instance          | [BaseAi](BaseAi.md)                    |
+| [isProvidedBy](isProvidedBy.md)                   | 0..1 <br/> [AiProvider](AiProvider.md)             | Indicates provider of an AI system or component                                  | [BaseAi](BaseAi.md)                    |
 | [isDefinedByTaxonomy](isDefinedByTaxonomy.md)     | 0..1 <br/> [Taxonomy](Taxonomy.md)                 | A relationship where a concept or a concept group is defined by a taxonomy       | [Entry](Entry.md)                      |
 | [isDefinedByVocabulary](isDefinedByVocabulary.md) | 0..1 <br/> [Vocabulary](Vocabulary.md)             | A relationship where a term or a term group is defined by a vocabulary           | [Entry](Entry.md)                      |
 | [hasExternalReference](hasExternalReference.md)   | \* <br/> [Documentation](Documentation.md)         | External references / additional resources related to this entity, such as ar... | [Entry](Entry.md)                      |
@@ -810,15 +810,15 @@ attributes:
     inlined: false
   isProvidedBy:
     name: isProvidedBy
-    description: A relationship to the Organization instance that provides this instance.
+    description: Indicates provider of an AI system or component.
     from_schema: https://w3id.org/ai-atlas-nexus/ai-risk-ontology
     rank: 1000
-    slot_uri: schema:provider
+    slot_uri: airo:isProvidedBy
     owner: AiSystem
     domain_of:
     - Dataset
     - BaseAi
-    range: Organization
+    range: AiProvider
   isDefinedByTaxonomy:
     name: isDefinedByTaxonomy
     description: A relationship where a concept or a concept group is defined by a

@@ -131,8 +131,8 @@ URI: [nexus:BaseAi](https://w3id.org/ai-atlas-nexus/BaseAi)
 
 
 
-        BaseAi --> "0..1" Organization : isProvidedBy
-        click Organization href "../Organization/"
+        BaseAi --> "0..1" AiProvider : isProvidedBy
+        click AiProvider href "../AiProvider/"
 
 
 
@@ -193,7 +193,7 @@ URI: [nexus:BaseAi](https://w3id.org/ai-atlas-nexus/BaseAi)
 | [hasDocumentation](hasDocumentation.md)     | \* <br/> [Documentation](Documentation.md)       | Indicates documentation associated with an entity                                | direct              |
 | [hasLicense](hasLicense.md)                 | 0..1 <br/> [License](License.md)                 | Indicates licenses associated with a resource                                    | direct              |
 | [performsTask](performsTask.md)             | \* <br/> [AiTask](AiTask.md)                     | relationship indicating the AI tasks an AI model can perform                     | direct              |
-| [isProvidedBy](isProvidedBy.md)             | 0..1 <br/> [Organization](Organization.md)       | A relationship to the Organization instance that provides this instance          | direct              |
+| [isProvidedBy](isProvidedBy.md)             | 0..1 <br/> [AiProvider](AiProvider.md)           | Indicates provider of an AI system or component                                  | direct              |
 | [id](id.md)                                 | 1 <br/> [String](String.md)                      | A unique identifier to this instance of the model element                        | [Entity](Entity.md) |
 | [name](name.md)                             | 0..1 <br/> [String](String.md)                   | A text name of this instance                                                     | [Entity](Entity.md) |
 | [description](description.md)               | 0..1 <br/> [String](String.md)                   | The description of an entity                                                     | [Entity](Entity.md) |
@@ -249,6 +249,12 @@ slots:
 - hasLicense
 - performsTask
 - isProvidedBy
+slot_usage:
+  isProvidedBy:
+    name: isProvidedBy
+    description: Indicates provider of an AI system or component.
+    slot_uri: airo:isProvidedBy
+    range: AiProvider
 
 ````
 </details>
@@ -262,6 +268,12 @@ description: Any type of AI, be it a LLM, RL agent, SVM, etc.
 from_schema: https://w3id.org/ai-atlas-nexus/ai-risk-ontology
 is_a: Entity
 abstract: true
+slot_usage:
+  isProvidedBy:
+    name: isProvidedBy
+    description: Indicates provider of an AI system or component.
+    slot_uri: airo:isProvidedBy
+    range: AiProvider
 attributes:
   isProducedBy:
     name: isProducedBy
@@ -347,15 +359,15 @@ attributes:
     inlined: false
   isProvidedBy:
     name: isProvidedBy
-    description: A relationship to the Organization instance that provides this instance.
+    description: Indicates provider of an AI system or component.
     from_schema: https://w3id.org/ai-atlas-nexus/ai-risk-ontology
     rank: 1000
-    slot_uri: schema:provider
+    slot_uri: airo:isProvidedBy
     owner: BaseAi
     domain_of:
     - Dataset
     - BaseAi
-    range: Organization
+    range: AiProvider
   id:
     name: id
     description: A unique identifier to this instance of the model element. Example

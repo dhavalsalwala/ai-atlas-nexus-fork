@@ -5,6 +5,8 @@ from openai.types.chat import ChatCompletionMessageParam
 from pydantic import BaseModel
 from typing_extensions import TypedDict
 
+from ai_atlas_nexus.metadata_base import ExplanationType
+
 
 class InferenceEngineCredentials(TypedDict):
     """Contains the prediction results and metadata for the inference.
@@ -24,6 +26,9 @@ class InferenceEngineCredentials(TypedDict):
     space_id: Optional[str] = None  # only used in WML engine
     project_id: Optional[str] = None  # only used in WML engine
     org_id: Optional[str] = None  # used in HF engine for org billing
+    aws_access_key_id: Optional[str] = None  # only used in Bedrock engine
+    aws_secret_access_key: Optional[str] = None  # only used in Bedrock engine
+    region_name: Optional[str] = None  # only used in Bedrock engine
 
 
 class RITSInferenceEngineParams(TypedDict):
@@ -148,23 +153,54 @@ class HFInferenceEngineParams(TypedDict):
     logprobs: Optional[bool] = True
     n: Optional[int] = None
 
+class AWSBedrockInferenceEngineParams(TypedDict):
+    # Native Bedrock converse params (amazon.*, anthropic.*, etc.)
+    maxTokens: Optional[int] = None
+    topP: Optional[float] = None
+    stopSequences: Optional[List[str]] = None
+    temperature: Optional[float] = None
+    # OpenAI-compatible params (openai.* models via invoke_model)
+    frequency_penalty: Optional[float] = None
+    presence_penalty: Optional[float] = None
+    max_completion_tokens: Optional[int] = None
+    max_tokens: Optional[int] = None
+    seed: Optional[int] = None
+    stop: Optional[List[str]] = None
+    top_p: Optional[float] = None
+    logprobs: Optional[bool] = None
+    top_logprobs: Optional[int] = None
+    logit_bias: Optional[Dict[str, int]] = None
+    n: Optional[int] = None
+    reasoning_effort: Optional[Literal["low", "medium", "high"]] = None
+    verbosity: Optional[Literal["low", "medium", "high"]] = None
+    service_tier: Optional[Literal["auto", "default", "flex", "scale", "priority"]] = None
+    store: Optional[bool] = None
+    metadata: Optional[Dict[str, str]] = None
+    safety_identifier: Optional[str] = None
+    prompt_cache_key: Optional[str] = None
+
 
 class OpenAIInferenceEngineParams(TypedDict):
     frequency_penalty: Optional[float] = None
     presence_penalty: Optional[float] = None
     max_completion_tokens: Optional[int] = None
     seed: Optional[int] = None
-    stop: Union[Optional[str], List[str]] = None
+    stop: Optional[list[str]] = None
     temperature: Optional[float] = None
     top_p: Optional[float] = None
+    max_tokens: Optional[int] = None
+    response_format: Optional[dict] = None
     top_logprobs: Optional[int] = None
-    logit_bias: Optional[Dict[str, int]] = None
+    logit_bias: Optional[dict] = None
     logprobs: Optional[bool] = None
     n: Optional[int] = None
-    parallel_tool_calls: Optional[bool] = None
-    service_tier: Optional[Literal["auto", "default", "flex"]] = None
+    reasoning_effort: Optional[Literal["low", "medium", "high"]] = None
+    verbosity: Optional[Literal["low", "medium", "high"]] = None
+    service_tier: Optional[Literal["auto", "default", "flex", "scale", "priority"]] = None
     store: Optional[bool] = None
-    user: Optional[str] = None
+    metadata: Optional[dict[str, str]] = None
+    safety_identifier: Optional[str] = None
+    prompt_cache_key: Optional[str] = None
 
 
 @dataclasses.dataclass(kw_only=True)
@@ -193,7 +229,7 @@ class TextGenerationInferenceOutput:
         thinking: When thinking is enabled in ollama (think=True), the output will separate the model's thinking from the model's output.
     """
 
-    prediction: Union[str, List[Dict[str, Any]]]
+    prediction: Union[str, Dict[str, Any], List[Any]]
     input_tokens: Optional[int] = None
     output_tokens: Optional[int] = None
     stop_reason: Optional[str] = None
@@ -229,3 +265,67 @@ class MelleaInferenceParams(TypedDict, total=False):
 ValidGenerateCompletionMessageParam: TypeAlias = Union[
     List[str], List[MelleaInferenceParams]
 ]
+
+
+@dataclasses.dataclass(kw_only=True)
+class TokenUsage:
+    """Token usage metrics from one or more LLM inference calls.
+
+    A count is None when the engine did not report it. `total_tokens` sums the counts
+    that were reported.
+    """
+
+    input_tokens: Optional[int] = None
+    output_tokens: Optional[int] = None
+    total_tokens: Optional[int] = None
+
+    def __post_init__(self) -> None:
+        # Derive the total when a caller reports only the parts.
+        if self.total_tokens is None and not (
+            self.input_tokens is None and self.output_tokens is None
+        ):
+            self.total_tokens = (self.input_tokens or 0) + (self.output_tokens or 0)
+
+    def __add__(self, other: "TokenUsage") -> "TokenUsage":
+        def _add(left: Optional[int], right: Optional[int]) -> Optional[int]:
+            if left is None and right is None:
+                return None
+            return (0 if left is None else left) + (0 if right is None else right)
+
+        return TokenUsage(
+            input_tokens=_add(self.input_tokens, other.input_tokens),
+            output_tokens=_add(self.output_tokens, other.output_tokens),
+            total_tokens=_add(self.total_tokens, other.total_tokens),
+        )
+
+
+@dataclasses.dataclass(kw_only=True)
+class UsecaseInferenceMetadata:
+    """Metadata from the inference calls made for a single usecase.
+    """
+
+    token_usage: TokenUsage
+    num_calls: int
+    seed: Optional[int] = None
+    stop_reason_summary: Dict[str, int] = dataclasses.field(default_factory=dict)
+    has_thinking: bool = False
+
+
+@dataclasses.dataclass(kw_only=True)
+class InferenceMetadata:
+    """Metadata from the inference calls within a detection operation.
+
+    The top-level fields aggregate every call in the run.
+    `per_usecase` breaks the same figures down one entry per usecase.
+    """
+
+    token_usage: TokenUsage
+    inference_engine: str
+    model: str
+    num_calls: int
+    seed: Optional[int] = None
+    stop_reason_summary: Dict[str, int] = dataclasses.field(default_factory=dict)
+    has_thinking: bool = False
+    per_usecase: List[UsecaseInferenceMetadata] = dataclasses.field(
+        default_factory=list
+    )

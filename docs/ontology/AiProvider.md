@@ -155,6 +155,17 @@ URI: [airo:AIProvider](https://w3id.org/airo#AIProvider)
 | [hasLifecycleStatus](hasLifecycleStatus.md) | 0..1 <br/> [LifecycleStatus](LifecycleStatus.md) | The editorial / publication lifecycle state of this entity                       | [Entity](Entity.md)             |
 | [notes](notes.md)                           | \* <br/> [String](String.md)                     | Free-text editorial notes, source breadcrumbs, or build-time provenance that ... | [Entity](Entity.md)             |
 
+## Usages
+
+| used by                                     | used in                         | type  | used                        |
+| ------------------------------------------- | ------------------------------- | ----- | --------------------------- |
+| [BaseAi](BaseAi.md)                         | [isProvidedBy](isProvidedBy.md) | range | [AiProvider](AiProvider.md) |
+| [AiSystem](AiSystem.md)                     | [isProvidedBy](isProvidedBy.md) | range | [AiProvider](AiProvider.md) |
+| [AiAgent](AiAgent.md)                       | [isProvidedBy](isProvidedBy.md) | range | [AiProvider](AiProvider.md) |
+| [AiModel](AiModel.md)                       | [isProvidedBy](isProvidedBy.md) | range | [AiProvider](AiProvider.md) |
+| [LargeLanguageModel](LargeLanguageModel.md) | [isProvidedBy](isProvidedBy.md) | range | [AiProvider](AiProvider.md) |
+| [Adapter](Adapter.md)                       | [isProvidedBy](isProvidedBy.md) | range | [AiProvider](AiProvider.md) |
+
 ## Identifier and Mapping Information
 
 ### Schema Source

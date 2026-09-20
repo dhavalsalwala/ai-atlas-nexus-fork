@@ -170,17 +170,11 @@ URI: [schema:Organization](http://schema.org/Organization)
 | [Container](Container.md)                   | [organizations](organizations.md) | range | [Organization](Organization.md) |
 | [Dataset](Dataset.md)                       | [isProvidedBy](isProvidedBy.md)   | range | [Organization](Organization.md) |
 | [BaseAi](BaseAi.md)                         | [isProducedBy](isProducedBy.md)   | range | [Organization](Organization.md) |
-| [BaseAi](BaseAi.md)                         | [isProvidedBy](isProvidedBy.md)   | range | [Organization](Organization.md) |
 | [AiSystem](AiSystem.md)                     | [isProducedBy](isProducedBy.md)   | range | [Organization](Organization.md) |
-| [AiSystem](AiSystem.md)                     | [isProvidedBy](isProvidedBy.md)   | range | [Organization](Organization.md) |
 | [AiAgent](AiAgent.md)                       | [isProducedBy](isProducedBy.md)   | range | [Organization](Organization.md) |
-| [AiAgent](AiAgent.md)                       | [isProvidedBy](isProvidedBy.md)   | range | [Organization](Organization.md) |
 | [AiModel](AiModel.md)                       | [isProducedBy](isProducedBy.md)   | range | [Organization](Organization.md) |
-| [AiModel](AiModel.md)                       | [isProvidedBy](isProvidedBy.md)   | range | [Organization](Organization.md) |
 | [LargeLanguageModel](LargeLanguageModel.md) | [isProducedBy](isProducedBy.md)   | range | [Organization](Organization.md) |
-| [LargeLanguageModel](LargeLanguageModel.md) | [isProvidedBy](isProvidedBy.md)   | range | [Organization](Organization.md) |
 | [Adapter](Adapter.md)                       | [isProducedBy](isProducedBy.md)   | range | [Organization](Organization.md) |
-| [Adapter](Adapter.md)                       | [isProvidedBy](isProvidedBy.md)   | range | [Organization](Organization.md) |
 
 ## Identifier and Mapping Information
 

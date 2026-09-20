@@ -310,8 +310,8 @@ URI: [nexus:Adapter](https://w3id.org/ai-atlas-nexus/Adapter)
 
 
 
-        Adapter --> "0..1" Organization : isProvidedBy
-        click Organization href "../Organization/"
+        Adapter --> "0..1" AiProvider : isProvidedBy
+        click AiProvider href "../AiProvider/"
 
 
 
@@ -446,7 +446,7 @@ URI: [nexus:Adapter](https://w3id.org/ai-atlas-nexus/Adapter)
 | [isProducedBy](isProducedBy.md)                   | 0..1 <br/> [Organization](Organization.md)                         | A relationship to the Organization instance which produces this instance         | [BaseAi](BaseAi.md)                                            |
 | [hasModelCard](hasModelCard.md)                   | \* <br/> [String](String.md)                                       | A relationship to model card references                                          | [BaseAi](BaseAi.md)                                            |
 | [performsTask](performsTask.md)                   | \* <br/> [AiTask](AiTask.md)                                       | relationship indicating the AI tasks an AI model can perform                     | [BaseAi](BaseAi.md)                                            |
-| [isProvidedBy](isProvidedBy.md)                   | 0..1 <br/> [Organization](Organization.md)                         | A relationship to the Organization instance that provides this instance          | [BaseAi](BaseAi.md)                                            |
+| [isProvidedBy](isProvidedBy.md)                   | 0..1 <br/> [AiProvider](AiProvider.md)                             | Indicates provider of an AI system or component                                  | [BaseAi](BaseAi.md)                                            |
 
 ## Usages
 
@@ -1190,15 +1190,15 @@ attributes:
     inlined: false
   isProvidedBy:
     name: isProvidedBy
-    description: A relationship to the Organization instance that provides this instance.
+    description: Indicates provider of an AI system or component.
     from_schema: https://w3id.org/ai-atlas-nexus/ai-risk-ontology
     rank: 1000
-    slot_uri: schema:provider
+    slot_uri: airo:isProvidedBy
     owner: Adapter
     domain_of:
     - Dataset
     - BaseAi
-    range: Organization
+    range: AiProvider
 
 ````
 
